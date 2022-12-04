@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/size_config.dart';
 
 // Light mode colors
 
@@ -18,6 +19,38 @@ const DarkModeLabelAndHeadersColor = Color(0xFFFFFFFF);
 const DarkModeSmallTextColor = Color(0xFFF2F1F1);
 
 
+
+final LightModeHeadersStyle = TextStyle(
+  fontSize: 26 ,
+  fontFamily: "Poppins",
+  //fontWeight: FontWeight.w700,  // semibold = w600
+  color:LightModeHeaderColor ,
+
+);
+
+final LightModeLabelsStyle = TextStyle(
+  fontSize: 16 ,
+  fontFamily: "Poppins",
+  color:LightModeLabelColor ,
+  fontWeight: FontWeight.w300,
+
+);
+
+final LightModeSmallTextStyle =  TextStyle(
+  fontSize: 16 ,
+  fontFamily: "Poppins",
+  color:LightModeSmallTextColor ,
+  fontWeight: FontWeight.w300,
+
+
+);
+
+final ErrorsTextStyle = TextStyle(
+  fontSize: 14 ,
+  color: Red,
+  fontFamily: "Poppins",
+  fontWeight: FontWeight.w300,
+);
 
 
 
