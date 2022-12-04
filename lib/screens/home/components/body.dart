@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation/components/already_have_account.dart';
 import 'package:graduation/size_config.dart';
 
+import '../../../components/defaulr_button.dart';
 import '../../../constants.dart';
 
 
@@ -29,7 +31,14 @@ class Body extends StatelessWidget {
 
 
                   ),
-                  Text("Reduce your carbon footprint",textAlign: TextAlign.center,style: LightModeHeadersStyle,)
+                  Text("Reduce your carbon footprint",textAlign: TextAlign.center,style: LightModeHeadersStyle,),
+                  Text("Taking control of our energy \nconsumption to make our planet safe",textAlign: TextAlign.center,style: LightModeSmallTextStyle,),
+                  AlreadyHaveAccount(),
+                  DefaultButton(text:"Sign Up",press:(){
+                   // Navigator.pushNamed(context, SignUpScreen.routeName),
+
+
+                  }),
                 ],
                 
               ),

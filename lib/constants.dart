@@ -30,17 +30,16 @@ final LightModeHeadersStyle = TextStyle(
 
 final LightModeLabelsStyle = TextStyle(
   fontSize: 16 ,
-  fontFamily: "Poppins",
+  fontFamily: "Poppins2",
   color:LightModeLabelColor ,
-  fontWeight: FontWeight.w300,
+
 
 );
 
 final LightModeSmallTextStyle =  TextStyle(
   fontSize: 16 ,
-  fontFamily: "Poppins",
+  fontFamily: "Poppins2",
   color:LightModeSmallTextColor ,
-  fontWeight: FontWeight.w300,
 
 
 );
@@ -48,8 +47,8 @@ final LightModeSmallTextStyle =  TextStyle(
 final ErrorsTextStyle = TextStyle(
   fontSize: 14 ,
   color: Red,
-  fontFamily: "Poppins",
-  fontWeight: FontWeight.w300,
+  fontFamily: "Poppins2",
+
 );
 
 
