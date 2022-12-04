@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/routes.dart';
 import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/theme.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
         theme: theme(),
-        initialRoute: HomeScreen.routeName,
+        initialRoute: SignUpScreen.routeName,
         routes: routes,
 
 
