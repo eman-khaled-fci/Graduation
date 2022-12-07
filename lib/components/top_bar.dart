@@ -16,10 +16,11 @@ class TopBar extends StatelessWidget {
     return SizedBox(
       width: double.infinity,
       child: Row(
+        //mainAxisAlignment: MainAxisAlignment.,
         children: [
           SizedBox(
-            width: getProportionateScreenWidth(50),
-            height: getProportionateScreenHeight(50),
+            width: getProportionateScreenWidth(40),
+            height: getProportionateScreenHeight(40),
             child: TextButton(
               style: TextButton.styleFrom(
                 shape:
@@ -28,11 +29,17 @@ class TopBar extends StatelessWidget {
                 backgroundColor: LightModeMainColor,
               ),
               onPressed: press as void Function()?,
-              child: SvgPicture.asset("assets/images/undraw_blooming_re_2kc4.svg"
+              child: Image.asset("assets/icons/mdi_arrow-back.png"
                   ,height: SizeConfig.screenHeight*0.06),
             ),
           ),
-          Text(""+text!,textAlign: TextAlign.center, style: LightModeHeadersStyle,)
+          // Expanded(child: SizedBox.shrink()
+          // ,flex:1
+          // ),
+
+        SizedBox(width: SizeConfig.screenWidth*0.1,),
+
+          Text(""+text!, style: LightModeHeadersStyle,)
 
         ],
       ),
