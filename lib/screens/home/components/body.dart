@@ -29,7 +29,7 @@ class Body extends StatelessWidget {
                     padding:// EdgeInsets.symmetric(vertical: 50),
                     EdgeInsets.only(top: 20),
                     child:
-                      SvgPicture.asset("assets/images/undraw_blooming_re_2kc4.svg"
+                      SvgPicture.asset("assets/images/undraw_message_sent_re_q2kl.svg"
                           ,height: SizeConfig.screenHeight*0.4),
 
 

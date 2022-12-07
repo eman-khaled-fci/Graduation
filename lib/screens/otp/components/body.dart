@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/components/top_bar.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation/constants.dart';
+import 'package:graduation/size_config.dart';
 
 class Body extends StatelessWidget {
   const Body({Key? key}) : super(key: key);
@@ -10,15 +13,34 @@ class Body extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         child: Padding(
-          padding: EdgeInsets.all(24),
+          padding: EdgeInsets.all(30),
           child: SingleChildScrollView(
 
         child: Column(
         children: [
           TopBar(text:"",press: (){},),
-          Text(""),
-          // كملي هنا بقا
-
+          Align(child: SvgPicture.asset("assets/new/otp.svg" , height:SizeConfig.screenHeight*.4,), alignment: Alignment.topCenter,),
+          Align(child: Text("Check your messages" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
+          // Text("we have sent a code to your phone number,")
+          SizedBox(height: SizeConfig.screenHeight*0.03),
+          Align(
+            child:
+            RichText(
+            text: TextSpan(
+              // Note: Styles for TextSpans must be explicitly defined.
+              // Child text spans will inherit styles from parent
+              style: LightModeSmallTextStyle,
+              children: <TextSpan>[
+                TextSpan(text: 'We have sent a code to your phone \nnumber, '),
+                TextSpan(text: ' please ', style:LogInTextStyle),
+                TextSpan(text: 'enter the code...'),
+              ],
+            ),
+          ),
+            alignment: Alignment.topLeft,
+          ),
+          SizedBox(height: SizeConfig.screenHeight*0.08),
+          Align(child: Text("OTP Verification",style: LightModeHeadersStyle),alignment: Alignment.bottomCenter,),
 
 
   ],
