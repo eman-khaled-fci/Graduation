@@ -11,7 +11,7 @@ const LightModeLabelColor = Color(0xFF00000);
 const LightModeHeaderColor = Color(0xFF474747);
 const LightModeSmallTextColor = Color(0xFF4D4B4B);
 
-const Red = Color(0xFFFF0000);
+const Red = Color(0xFFEB4335);
 //
 // // Dark mode colors
 // const DarkModeMainBackgroundColor = Color(0xFF6C63FF);
@@ -46,7 +46,7 @@ final LightModeSmallTextStyle =  TextStyle(
 );
 
 final ErrorsTextStyle = TextStyle(
-  fontSize: getProportionateScreenWidth(14) ,
+  fontSize: getProportionateScreenWidth(15) ,
   color: Red,
   fontFamily: "Poppins2",
 
@@ -70,8 +70,21 @@ final ContinueWithTextStyle = TextStyle(
     fontSize: getProportionateScreenWidth(18)
     ,color: LightModeSmallTextColor);
 
+final textStyle =  TextStyle(
+
+  fontSize: getProportionateScreenWidth(16)  ,
+  fontFamily: "Poppins3",
+  color:Colors.black ,
 
 
+);
+
+final InputTextStyle = TextStyle(
+  fontSize: getProportionateScreenWidth(17)  ,
+  fontFamily: "Poppins2",
+  color: LightModeSmallTextColor,
+
+);
 
 
 
