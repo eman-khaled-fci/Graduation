@@ -4,24 +4,25 @@ import 'package:graduation/size_config.dart';
 // Light mode colors
 
 const LightModeMainBackgroundColor = Color(0xFFFFFFFF);
-const LightModeMainColor = Color(0xFF6C63FF );
-const LightModeLightPurpleColor = Color(0xFFF3F2FF);
+const LightModeMainColor = Color(0xFF1CA953 );
+const MyLightModeLightGreenColor = Color(0xFFB9F3D1);
+const LightModeLightGreenColor = Color(0xFFE8F6EE);
 const LightModeLabelColor = Color(0xFF00000);
 const LightModeHeaderColor = Color(0xFF474747);
 const LightModeSmallTextColor = Color(0xFF4D4B4B);
 
 const Red = Color(0xFFFF0000);
-
-// Dark mode colors
-const DarkModeMainBackgroundColor = Color(0xFF6C63FF);
-const DarkModeWhiteColor = Color(0xFFF3F2FF);
-const DarkModeLabelAndHeadersColor = Color(0xFFFFFFFF);
-const DarkModeSmallTextColor = Color(0xFFF2F1F1);
-
-
+//
+// // Dark mode colors
+// const DarkModeMainBackgroundColor = Color(0xFF6C63FF);
+// const DarkModeWhiteColor = Color(0xFFF3F2FF);
+// const DarkModeLabelAndHeadersColor = Color(0xFFFFFFFF);
+// const DarkModeSmallTextColor = Color(0xFFF2F1F1);
+//
+//
 
 final LightModeHeadersStyle = TextStyle(
-  fontSize: 26 ,
+  fontSize: getProportionateScreenWidth(21) ,  //26
   fontFamily: "Poppins",
   //fontWeight: FontWeight.w700,  // semibold = w600
   color:LightModeHeaderColor ,
@@ -29,7 +30,7 @@ final LightModeHeadersStyle = TextStyle(
 );
 
 final LightModeLabelsStyle = TextStyle(
-  fontSize: 16 ,
+  fontSize: getProportionateScreenWidth(16) ,
   fontFamily: "Poppins2",
   color:LightModeLabelColor ,
 
@@ -37,7 +38,7 @@ final LightModeLabelsStyle = TextStyle(
 );
 
 final LightModeSmallTextStyle =  TextStyle(
-  fontSize: 16 ,
+  fontSize: getProportionateScreenWidth(16)  ,
   fontFamily: "Poppins2",
   color:LightModeSmallTextColor ,
 
@@ -45,11 +46,29 @@ final LightModeSmallTextStyle =  TextStyle(
 );
 
 final ErrorsTextStyle = TextStyle(
-  fontSize: 14 ,
+  fontSize: getProportionateScreenWidth(14) ,
   color: Red,
   fontFamily: "Poppins2",
 
 );
+
+final ButtonFontStyle = TextStyle(
+  color: LightModeMainBackgroundColor,
+  fontFamily: "Poppins",
+  fontSize: getProportionateScreenWidth(21),
+);
+
+final LogInTextStyle =  TextStyle(
+    fontSize: getProportionateScreenWidth(18),
+    fontFamily: "Poppins",
+    color: LightModeMainColor
+
+);
+
+final ContinueWithTextStyle = TextStyle(
+    fontFamily: "Poppins",
+    fontSize: getProportionateScreenWidth(18)
+    ,color: LightModeSmallTextColor);
 
 
 

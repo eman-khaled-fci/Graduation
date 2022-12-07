@@ -13,11 +13,11 @@ class AlreadyHaveAccount extends StatelessWidget {
     return  Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("Already have an account?",style: LightModeSmallTextStyle),
+        Text("Already have an account ? ",style: LightModeSmallTextStyle),
         GestureDetector(
             onTap:() => Navigator.pushNamed(context, SignInScreen.routeName),
             child:
-            Text("Log in ",style: TextStyle(fontSize: getProportionateScreenWidth(16),color: LightModeMainColor),)),
+            Text("Log in ",style: LogInTextStyle,)),
 
       ],
     );
