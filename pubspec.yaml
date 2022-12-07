@@ -69,3 +69,6 @@ flutter:
     - family: Poppins2
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
+    - family: Poppins3
+      fonts:
+        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
