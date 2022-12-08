@@ -1,4 +1,7 @@
+//import 'dart:js';
+
 import 'package:flutter/widgets.dart';
+import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
 import 'package:graduation/screens/otp/otp_screen.dart';
 import 'package:graduation/screens/sign_in/sign_in_screen.dart';
@@ -10,5 +13,6 @@ final Map  <String, WidgetBuilder> routes = {
   SignUpScreen.routeName:((context) => SignUpScreen()),
   SignInScreen.routeName:((context) => SignInScreen()),
   OtpScreen.routeName:((context) => OtpScreen()),
+  ForgetPasswordScreen.routeName:((context) => ForgetPasswordScreen()),
 
 };

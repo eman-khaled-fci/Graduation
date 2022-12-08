@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../otp/components/body.dart';
+
 
 class OtpForm extends StatefulWidget {
   const OtpForm({Key? key}) : super(key: key);
@@ -11,6 +13,8 @@ class OtpForm extends StatefulWidget {
 class _OtpFormState extends State<OtpForm> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      child: Body(),
+    );
   }
 }

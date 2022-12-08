@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/routes.dart';
+import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/otp/otp_screen.dart';
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/theme.dart';
 
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
         theme: theme(),
-        initialRoute: SignUpScreen.routeName,
+        initialRoute: ForgetPasswordScreen.routeName,
         routes: routes,
 
 
