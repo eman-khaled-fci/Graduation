@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/components/default_button.dart';
+import 'package:graduation/components/recieve_otp.dart';
 import 'package:graduation/components/top_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/screens/otp/components/otp_form.dart';
 import 'package:graduation/size_config.dart';
 
 class Body extends StatelessWidget {
@@ -22,7 +25,7 @@ class Body extends StatelessWidget {
           Align(child: SvgPicture.asset("assets/new/otp.svg" , height:SizeConfig.screenHeight*.4,), alignment: Alignment.topCenter,),
           Align(child: Text("Check your messages" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
           // Text("we have sent a code to your phone number,")
-          SizedBox(height: SizeConfig.screenHeight*0.03),
+          SizedBox(height: SizeConfig.screenHeight*0.02),
           Align(
             child:
             RichText(
@@ -39,8 +42,14 @@ class Body extends StatelessWidget {
           ),
             alignment: Alignment.topLeft,
           ),
-          SizedBox(height: SizeConfig.screenHeight*0.08),
+          SizedBox(height: SizeConfig.screenHeight*0.05),
           Align(child: Text("OTP Verification",style: LightModeHeadersStyle),alignment: Alignment.bottomCenter,),
+          SizedBox(height: SizeConfig.screenHeight*0.02),
+          OtpForm(),
+          SizedBox(height: SizeConfig.screenHeight*0.03),
+          DefaultButton(text: "Verify",press: (){},),
+          SizedBox(height: SizeConfig.screenHeight*0.02),
+          RecieveOtp(),
 
 
   ],

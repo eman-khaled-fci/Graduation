@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/size_config.dart';
 
 import '../sign_in/components/body.dart';
 
@@ -9,6 +10,7 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       body: Body() ,
 
