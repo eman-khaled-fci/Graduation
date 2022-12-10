@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/size_config.dart';
 
+import '../../../components/default_button.dart';
+
 
 class CompleteProfileForm extends StatefulWidget {
   const CompleteProfileForm({Key? key}) : super(key: key);
@@ -51,13 +53,13 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           alignment: Alignment.topLeft,),
 
 
-          SizedBox(height: SizeConfig.screenHeight*0.012,),
+          SizedBox(height: SizeConfig.screenHeight*0.019,),
           buildUniversityNameFormField(),
           // Align(child: Padding(
           //   padding: const EdgeInsets.only(left: 12),
           //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
           // ),alignment: Alignment.topLeft,),
-          SizedBox(height: SizeConfig.screenHeight*0.01,),
+          SizedBox(height: SizeConfig.screenHeight*0.03,),
 
 
           SizedBox(height: SizeConfig.screenHeight*0.02,),
@@ -71,12 +73,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: SizeConfig.screenHeight*0.01,),
 
 
-    SizedBox(height: SizeConfig.screenHeight*0.02,)
+    SizedBox(height: SizeConfig.screenHeight*0.05,),
+    Align(child: Text("Gender",style: textStyle),alignment: Alignment.centerLeft,),
 
     ]
-
     );
-
   }
 }
 
@@ -110,18 +111,9 @@ Padding buildUniversityNameFormField(){
               //SvgPicture.asset("")
 
             ),
-
           ),
         ),
-
-
-      ))
-
-
-
-  ;
-
-
+      ));
 
 }
 
@@ -157,14 +149,6 @@ Padding buildCollegeNameFormField(){
 
           ),
         ),
-
-
       ))
-
-
-
   ;
-
-
-
 }

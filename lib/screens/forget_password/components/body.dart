@@ -25,12 +25,12 @@ class Body extends StatelessWidget {
                 Align(child: SvgPicture.asset("assets/new/ForgetPassword.svg" , height:SizeConfig.screenHeight*.38,), alignment: Alignment.topCenter,),
                 Align(child: Text("Forget Password" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
                 // Text("we have sent a code to your phone number,")
-                SizedBox(height: SizeConfig.screenHeight*0.015),
+                SizedBox(height: SizeConfig.screenHeight*0.013),
                 Align(child: Text("Enter your email that associated with your account to reset your password", style: LightModeSmallTextStyle,),
                   alignment: Alignment.topLeft,
                 ),
                 SizedBox(height: SizeConfig.screenHeight*0.07),
-                Align(child: Text(" Your Email",style:LightModeSmallTextStyle), alignment: Alignment.topLeft,),
+                Align(child: Text(" Your Email",style:textStyle), alignment: Alignment.topLeft,),
                 SizedBox(height: SizeConfig.screenHeight*0.012,),
 
 

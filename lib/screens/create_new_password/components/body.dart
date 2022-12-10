@@ -20,8 +20,9 @@ class Body extends StatelessWidget {
     child: Column(
     children: [
     TopBar(text:"",press: (){},),
-      Align(child: SvgPicture.asset("assets/images/undraw_confirmed_re_sef7.svg" , height:SizeConfig.screenHeight*.32,), alignment: Alignment.topCenter,),
       SizedBox(height: SizeConfig.screenHeight*0.02,),
+      Align(child: SvgPicture.asset("assets/images/undraw_confirmed_re_sef7.svg" , height:SizeConfig.screenHeight*.31,), alignment: Alignment.topCenter,),
+      SizedBox(height: SizeConfig.screenHeight*0.03,),
       Align(child: Text("Create new password" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
       SizedBox(height: SizeConfig.screenHeight*0.01,),
       Align(
@@ -42,6 +43,7 @@ class Body extends StatelessWidget {
       ),
       SizedBox(height: SizeConfig.screenHeight*0.04,),
       CraeteNewPasswordForm(),
+      SizedBox(height: SizeConfig.screenHeight*0.016,),
       DefaultButton(text: "Reset Password",press: (){},)
 
 

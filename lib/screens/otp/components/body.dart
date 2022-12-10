@@ -22,7 +22,9 @@ class Body extends StatelessWidget {
         child: Column(
         children: [
           TopBar(text:"",press: (){},),
-          Align(child: SvgPicture.asset("assets/new/otp.svg" , height:SizeConfig.screenHeight*.4,), alignment: Alignment.topCenter,),
+          SizedBox(height: SizeConfig.screenHeight*0.03,),
+          Align(child: SvgPicture.asset("assets/new/otp.svg" , height:SizeConfig.screenHeight*.33,), alignment: Alignment.topCenter,),
+          SizedBox(height: SizeConfig.screenHeight*0.02,),
           Align(child: Text("Check your messages" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
           // Text("we have sent a code to your phone number,")
           SizedBox(height: SizeConfig.screenHeight*0.02),

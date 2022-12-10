@@ -24,13 +24,13 @@ class Body extends StatelessWidget {
           child:
           Column(
             children: [
-              TopBar(text: "Login Page",press:(){}),
-              Align(child: SvgPicture.asset("assets/images/undraw_login_re_4vu2.svg" , height:SizeConfig.screenHeight*.36,), alignment: Alignment.topCenter,),
+              TopBar(text: "      Login Page",press:(){}),
+              Align(child: SvgPicture.asset("assets/images/undraw_login_re_4vu2.svg" , height:SizeConfig.screenHeight*.4,), alignment: Alignment.topCenter,),
              // SizedBox(height: SizeConfig.screenHeight*0.01),
               SignInForm(),
-              SizedBox(height: SizeConfig.screenHeight*0.08),
+              SizedBox(height: SizeConfig.screenHeight*0.05),
               DefaultButton(text: "Log in",press: (){},),
-              SizedBox(height: SizeConfig.screenHeight*0.03),
+              SizedBox(height: SizeConfig.screenHeight*0.02),
               ForgetPassword(),
 
 
