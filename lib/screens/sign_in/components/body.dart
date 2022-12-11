@@ -5,6 +5,7 @@ import 'package:graduation/components/top_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/screens/forget_password/forget_password_screen.dart';
+import 'package:graduation/screens/home/home_screen.dart';
 import 'package:graduation/screens/sign_in/components/sign_in_form.dart';
 import 'package:graduation/screens/sign_in/sign_in_screen.dart';
 import 'package:graduation/screens/sign_up/components/sign_up_form.dart';
@@ -25,13 +26,17 @@ class Body extends StatelessWidget {
           child:
           Column(
             children: [
-              TopBar(text: "      Login Page",press:(){}),
+              TopBar(text: "      Login Page",press:(){
+
+                Navigator.pushNamed(context, HomeScreen.routeName);
+
+              }),
               Align(child: SvgPicture.asset("assets/images/undraw_login_re_4vu2.svg" , height:SizeConfig.screenHeight*.4,), alignment: Alignment.topCenter,),
              // SizedBox(height: SizeConfig.screenHeight*0.01),
               SignInForm(),
               SizedBox(height: SizeConfig.screenHeight*0.05),
               DefaultButton(text: "Log in",press: (){
-                Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
+                //Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
 
               },),
               SizedBox(height: SizeConfig.screenHeight*0.02),

@@ -3,6 +3,7 @@ import 'package:graduation/components/default_button.dart';
 import 'package:graduation/components/top_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/screens/otp/otp_screen.dart';
+import 'package:graduation/screens/sign_in/sign_in_screen.dart';
 
 import '../../../components/custom_suffix_icon.dart';
 import '../../../constants.dart';
@@ -22,7 +23,9 @@ class Body extends StatelessWidget {
 
             child: Column(
               children: [
-                TopBar(text:"",press: (){},),
+                TopBar(text:"",press: (){
+                  Navigator.pushNamed(context, SignInScreen.routeName);
+                },),
                 Align(child: SvgPicture.asset("assets/new/ForgetPassword.svg" , height:SizeConfig.screenHeight*.38,), alignment: Alignment.topCenter,),
                 Align(child: Text("Forget Password" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
                 // Text("we have sent a code to your phone number,")

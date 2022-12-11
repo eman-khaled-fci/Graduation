@@ -5,6 +5,7 @@ import 'package:graduation/components/top_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/screens/create_new_password/create_new_password_screen.dart';
+import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/otp/components/otp_form.dart';
 import 'package:graduation/size_config.dart';
 
@@ -22,7 +23,11 @@ class Body extends StatelessWidget {
 
         child: Column(
         children: [
-          TopBar(text:"",press: (){},),
+          TopBar(text:"",press: (){
+            Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
+
+
+          },),
           SizedBox(height: SizeConfig.screenHeight*0.03,),
           Align(child: SvgPicture.asset("assets/new/otp.svg" , height:SizeConfig.screenHeight*.33,), alignment: Alignment.topCenter,),
           SizedBox(height: SizeConfig.screenHeight*0.02,),
@@ -54,7 +59,7 @@ class Body extends StatelessWidget {
 
             //execute some function
             //go to create new password
-            Navigator.pushNamed(context, CreateNewPasswordScreen.routeName);
+
           },),
           SizedBox(height: SizeConfig.screenHeight*0.02),
           RecieveOtp(),
