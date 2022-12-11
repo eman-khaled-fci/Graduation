@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 
 import '../constants.dart';
 import '../screens/sign_in/sign_in_screen.dart';
@@ -16,7 +17,7 @@ class ForgetPassword extends StatelessWidget {
       children: [
         Text("Forget The Password ? ",style: LightModeSmallTextStyle),
         GestureDetector(
-            onTap:() => Navigator.pushNamed(context, SignInScreen.routeName),
+            onTap:() => Navigator.pushNamed(context, ForgetPasswordScreen.routeName),
             child:
             Text("Reset Now",style: LogInTextStyle,)),
 
