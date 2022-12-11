@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/components/top_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:graduation/screens/otp/otp_screen.dart';
 
 import '../../../components/custom_suffix_icon.dart';
 import '../../../constants.dart';
@@ -53,7 +54,10 @@ class Body extends StatelessWidget {
                 SizedBox(height: SizeConfig.screenHeight*0.06,),
 
                 Container(
-                  child: DefaultButton(text: "Continue",press: (){},),
+                  child: DefaultButton(text: "Continue",press: (){
+                    Navigator.pushNamed(context, OtpScreen.routeName);
+
+                  },),
                 )]
             ),),),),
     );

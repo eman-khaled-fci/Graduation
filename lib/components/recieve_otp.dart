@@ -15,7 +15,7 @@ class RecieveOtp extends StatelessWidget {
       children: [
         Text("Didn't recieve the OTP ? ",style: LightModeSmallTextStyle),
         GestureDetector(
-            onTap:() => Navigator.pushNamed(context, SignInScreen.routeName),
+            onTap:() {},
             child:
             Text("Resend",style: LogInTextStyle,)),
 

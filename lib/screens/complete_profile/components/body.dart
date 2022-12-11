@@ -25,7 +25,10 @@ class Body extends StatelessWidget {
       GenderForm(),
       SizedBox(height: SizeConfig.screenHeight*0.08,),
       Container(
-        child: DefaultButton(text: "Register",press: (){},),alignment: Alignment.bottomCenter,),
+        child: DefaultButton(text: "Register",press: (){
+
+
+        },),alignment: Alignment.bottomCenter,),
       SizedBox(height: SizeConfig.screenHeight*0.03),
       AlreadyHaveAccount(),
 

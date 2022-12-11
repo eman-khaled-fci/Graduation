@@ -4,6 +4,7 @@ import 'package:graduation/components/recieve_otp.dart';
 import 'package:graduation/components/top_bar.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/screens/create_new_password/create_new_password_screen.dart';
 import 'package:graduation/screens/otp/components/otp_form.dart';
 import 'package:graduation/size_config.dart';
 
@@ -49,7 +50,12 @@ class Body extends StatelessWidget {
           SizedBox(height: SizeConfig.screenHeight*0.02),
           OtpForm(),
           SizedBox(height: SizeConfig.screenHeight*0.03),
-          DefaultButton(text: "Verify",press: (){},),
+          DefaultButton(text: "Verify",press: (){
+
+            //execute some function
+            //go to create new password
+            Navigator.pushNamed(context, CreateNewPasswordScreen.routeName);
+          },),
           SizedBox(height: SizeConfig.screenHeight*0.02),
           RecieveOtp(),
 
