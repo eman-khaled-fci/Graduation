@@ -32,11 +32,7 @@ class Body extends StatelessWidget {
                SizedBox(height: SizeConfig.screenHeight*0.04,),
                 SignUpForm(),
 
-                DefaultButton(text: "Continue",press: (){
 
-                  Navigator.pushNamed(context, CompleteProfileScreen.routeName);
-
-                },),
                 SizedBox(height: SizeConfig.screenHeight*0.01,),
                 AlreadyHaveAccount(),
 

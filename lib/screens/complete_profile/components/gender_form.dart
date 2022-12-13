@@ -27,28 +27,29 @@ children: [
     width: 140,
     height: 160,
     decoration: BoxDecoration(
-      color: LightModeLightGreenColor,
-        borderRadius: new BorderRadius.circular(4)
+      color: LightGray,
+        borderRadius: new BorderRadius.circular(14)
 
     ),
     child: Column(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
      children: [
        Align(
 
     alignment: Alignment.topLeft,
            child:Transform.scale(
          scale: 1.3,
+             child: RadioListTile(
+                 activeColor: LightModeMainColor,
+                 value: "Male",
+                 groupValue: gender,
+                 onChanged:(value){
+                   setState(() {
+                     gender = value.toString();
+                   });
+                 }
+             ),
 
-         child: RadioListTile(
-           activeColor: LightModeMainColor,
-           value: "Male",
-           groupValue: gender,
-           onChanged:(value){
-             setState(() {
-               gender = value.toString();
-             });
-           }
-         ),
 
 
          //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -63,7 +64,8 @@ children: [
          //   checkColor: Colors.white,
          //   autofocus: true,
          // ),
-       ))
+       )
+       )
       ,
        Align(child: SvgPicture.asset("assets/images/undraw_male_avatar_re_y880.svg" , height:SizeConfig.screenHeight*.09,), alignment: Alignment.topCenter,),
        Text("Male",style: textStyle,)
@@ -79,7 +81,7 @@ children: [
     width: 140,
     height: 160,
     decoration: BoxDecoration(
-        color: LightModeLightGreenColor,
+        color: LightGray,
         borderRadius: new BorderRadius.circular(4)
 
     ),

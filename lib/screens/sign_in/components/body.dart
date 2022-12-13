@@ -31,15 +31,10 @@ class Body extends StatelessWidget {
                 Navigator.pushNamed(context, HomeScreen.routeName);
 
               }),
-              Align(child: SvgPicture.asset("assets/images/undraw_login_re_4vu2.svg" , height:SizeConfig.screenHeight*.4,), alignment: Alignment.topCenter,),
+              Align(child: SvgPicture.asset("assets/images/undraw_login_re_4vu2.svg" , height:SizeConfig.screenHeight*.35,), alignment: Alignment.topCenter,),
              // SizedBox(height: SizeConfig.screenHeight*0.01),
               SignInForm(),
-              SizedBox(height: SizeConfig.screenHeight*0.05),
-              DefaultButton(text: "Log in",press: (){
-                //Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
 
-              },),
-              SizedBox(height: SizeConfig.screenHeight*0.02),
               ForgetPassword(),
 
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/components/custom_suffix_icon.dart';
+import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/screens/sign_in/sign_in_screen.dart';
 import 'package:graduation/size_config.dart';
 
 class CraeteNewPasswordForm extends StatefulWidget {
@@ -16,29 +18,11 @@ class _CraeteNewPasswordFormState extends State<CraeteNewPasswordForm> {
 
   String? newpassword;
   String? conform_password;
-
-
-
-
-  final List<String> errors = [];
-
-  void addError({String? error}) {
-    if (!errors.contains(error))
-      setState(() {
-        errors.add(error!);
-      });
-
-  }
-
-  void removeError({String? error}) {
-    if (errors.contains(error))
-      setState(() {
-        errors.remove(error);
-      });
-  }
-
-
-
+  String _PasswordErrorMessage = '';
+  String _ConfirmPasswordErrorMessage = '';
+  bool _flag1 = false;
+  bool _flag2 = false;
+  var _pass;
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +33,10 @@ class _CraeteNewPasswordFormState extends State<CraeteNewPasswordForm> {
         Align(child: Text("New Password",style: textStyle,), alignment: Alignment.topLeft,),
         SizedBox(height: SizeConfig.screenHeight*0.012,),
         buildPasswordFormField(),
-        // Align(child: Padding(
-        //   padding: const EdgeInsets.only(left: 12),
-        //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
-        // ),alignment: Alignment.topLeft,),
+        Align(child: Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Text(_PasswordErrorMessage,style: ErrorsTextStyle,),
+        ),alignment: Alignment.topLeft,),
         SizedBox(height: SizeConfig.screenHeight*0.01,),
 
 
@@ -60,11 +44,17 @@ class _CraeteNewPasswordFormState extends State<CraeteNewPasswordForm> {
         Align(child: Text("Confirm Password",style: textStyle,), alignment: Alignment.topLeft,),
         SizedBox(height: SizeConfig.screenHeight*0.012,),
         buildConfirmPasswordFormField(),
-        // Align(child: Padding(
-        //   padding: const EdgeInsets.only(left: 12),
-        //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
-        // ),alignment: Alignment.topLeft,),
-        SizedBox(height: SizeConfig.screenHeight*0.02,),
+        Align(child: Padding(
+          padding: const EdgeInsets.only(left: 12),
+          child: Text(_ConfirmPasswordErrorMessage,style: ErrorsTextStyle,),
+        ),alignment: Alignment.topLeft,),
+        SizedBox(height: SizeConfig.screenHeight*0.036,),
+        //SizedBox(height: SizeConfig.screenHeight*0.016,),
+        DefaultButton(text: "Reset Password",press:isOk()? () {
+         // Navigator.pushNamed(context, SignInScreen.routeName);
+
+
+        }:null,)
 
 
 
@@ -72,98 +62,182 @@ class _CraeteNewPasswordFormState extends State<CraeteNewPasswordForm> {
       ],
     );
   }
-}
 
 
-Padding buildPasswordFormField(){
-
-  return Padding(
-      padding:
-      EdgeInsets.all(0),
-      child: Container(
-        height: 48,
-        decoration: BoxDecoration(
-          color: LightModeLightGreenColor,
-          borderRadius: new BorderRadius.circular(12.0),
-        ),
 
 
-        child: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                //hintText: '12345678',
-                hintStyle: InputTextStyle ,
-                labelStyle: InputTextStyle,
-                suffixIcon:
+  Padding buildPasswordFormField(){
 
-                CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+    return Padding(
+        padding:
+        EdgeInsets.all(0),
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: LightModeLightGreenColor,
+            borderRadius: new BorderRadius.circular(12.0),
+          ),
 
 
-              //SvgPicture.asset("")
+          child: Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: TextFormField(
+              obscureText: true,
+              onChanged: (val) {
+                // val = _pass;
+                validatePassword(val);
+              },
+
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  //hintText: '12345678',
+                  hintStyle: InputTextStyle ,
+                  labelStyle: InputTextStyle,
+                  suffixIcon:
+
+                  CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+
+
+                //SvgPicture.asset("")
+
+              ),
 
             ),
-
           ),
-        ),
 
 
-      ))
-
-
-
-  ;
+        ))
 
 
 
-}
+    ;
+
+
+
+  }
 
 
 
 
-Padding buildConfirmPasswordFormField(){
+  Padding buildConfirmPasswordFormField(){
 
-  return Padding(
-      padding:
-      EdgeInsets.all(0),
-      child: Container(
-        height: 48,
-        decoration: BoxDecoration(
-          color: LightModeLightGreenColor,
-          borderRadius: new BorderRadius.circular(12.0),
-        ),
-
-
-        child: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                // hintText: '12345678',
-                hintStyle:InputTextStyle ,
-                labelStyle: InputTextStyle,
-                suffixIcon:
-
-                CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+    return Padding(
+        padding:
+        EdgeInsets.all(0),
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: LightModeLightGreenColor,
+            borderRadius: new BorderRadius.circular(12.0),
+          ),
 
 
-              //SvgPicture.asset("")
+          child: Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: TextFormField(
+              onChanged: (val) {
+                // _confirmPass = val;
+                validateConfirmPassword(val);
+
+              },
+              obscureText: true,
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  // hintText: '12345678',
+                  hintStyle:InputTextStyle ,
+                  labelStyle: InputTextStyle,
+                  suffixIcon:
+
+                  CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+
+
+                //SvgPicture.asset("")
+
+              ),
 
             ),
-
           ),
-        ),
 
 
-      ))
+        ))
 
 
 
-  ;
+    ;
 
 
+
+  }
+
+  bool ifThereIsError(String errorMessage , bool _flag){
+    if(errorMessage.isNotEmpty ){
+      return true;
+    }
+    else if(errorMessage=="" && _flag == false ){
+      return true;
+    }
+    else{
+      return false;
+    }
+
+  }
+
+  bool isOk() {
+    //print(_flag);
+    if (
+
+    ifThereIsError(_PasswordErrorMessage,_flag1) || ifThereIsError(_ConfirmPasswordErrorMessage,_flag2)
+
+    ) {
+      return false;
+    }
+    return true;
+  }
+
+  void validatePassword(String val){
+
+    if (val.isEmpty) {
+      setState(() {
+        _PasswordErrorMessage = kPassNullError;
+      });
+    } else if (val.length<8) {
+      setState(() {
+        _PasswordErrorMessage = kShortPassError;
+      });
+    } else {
+      setState(() {
+        _PasswordErrorMessage = "";
+      });
+      _pass = val;
+      _flag1=true;
+
+    }
+
+
+  }
+
+  void validateConfirmPassword(String val){
+//print(_pass.text);
+    if (val.isEmpty) {
+      setState(() {
+        _ConfirmPasswordErrorMessage = kPassNullError;
+      });
+    } else if (val != _pass) {
+      setState(() {
+        _ConfirmPasswordErrorMessage = kMatchPassError;
+      });
+    } else {
+      setState(() {
+        _ConfirmPasswordErrorMessage = "";
+      });
+      _flag2=true;
+      // conform_password = val;
+    }
+
+
+
+
+  }
 
 }
+

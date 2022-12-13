@@ -43,8 +43,6 @@ class Body extends StatelessWidget {
       ),
       SizedBox(height: SizeConfig.screenHeight*0.04,),
       CraeteNewPasswordForm(),
-      SizedBox(height: SizeConfig.screenHeight*0.016,),
-      DefaultButton(text: "Reset Password",press: (){},)
 
 
     ]

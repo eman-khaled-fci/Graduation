@@ -18,24 +18,10 @@ class _SignInFormState extends State<SignInForm> {
   String? email;
   String? password;
   bool value = false;
-
-  final List<String> errors = [];
-
-  void addError({String? error}) {
-    if (!errors.contains(error))
-      setState(() {
-        errors.add(error!);
-      });
-
-  }
-
-  void removeError({String? error}) {
-    if (errors.contains(error))
-      setState(() {
-        errors.remove(error);
-      });
-  }
-
+  String _EmailErrorMessage = '';
+  String _PasswordErrorMessage = '';
+  bool _flag1 = false;
+  bool _flag2 = false;
 
 
   @override
@@ -45,24 +31,24 @@ class _SignInFormState extends State<SignInForm> {
         child: Column(
         children: [
           Align(child: Text("Your Email",style: textStyle,), alignment: Alignment.topLeft,),
-          SizedBox(height: SizeConfig.screenHeight*0.012,),
+          SizedBox(height: SizeConfig.screenHeight*0.011,),
           buildEmailFormField(),
-          // Align(child: Padding(
-          //   padding: const EdgeInsets.only(left: 12),
-          //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
-          // ),alignment: Alignment.topLeft,),
-          SizedBox(height: SizeConfig.screenHeight*0.006,),
+          Align(child: Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text(_EmailErrorMessage,style: ErrorsTextStyle,),
+          ),alignment: Alignment.topLeft,),
+          SizedBox(height: SizeConfig.screenHeight*0.005,),
 
 
-          SizedBox(height: SizeConfig.screenHeight*0.02,),
+          SizedBox(height: SizeConfig.screenHeight*0.01,),
           Align(child: Text("Password",style: textStyle,), alignment: Alignment.topLeft,),
-          SizedBox(height: SizeConfig.screenHeight*0.012,),
+          SizedBox(height: SizeConfig.screenHeight*0.011,),
           buildPasswordFormField(),
-          // Align(child: Padding(
-          //   padding: const EdgeInsets.only(left: 12),
-          //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
-          // ),alignment: Alignment.topLeft,),
-          SizedBox(height: SizeConfig.screenHeight*0.006,),
+          Align(child: Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text(_PasswordErrorMessage,style: ErrorsTextStyle,),
+          ),alignment: Alignment.topLeft,),
+          SizedBox(height: SizeConfig.screenHeight*0.005,),
 
 
           Row(
@@ -90,7 +76,13 @@ class _SignInFormState extends State<SignInForm> {
 
 
             ],
-          )
+          ),
+          SizedBox(height: SizeConfig.screenHeight*0.04),
+          DefaultButton(text: "Log in",press:isOk()? () {
+            //Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
+
+          }:null,),
+          SizedBox(height: SizeConfig.screenHeight*0.02),
 
 
 
@@ -98,92 +90,166 @@ class _SignInFormState extends State<SignInForm> {
    )
    );
   }
-}
+  bool ifThereIsError(String errorMessage , bool _flag){
+    if(errorMessage.isNotEmpty ){
+      return true;
+    }
+    else if(errorMessage=="" && _flag == false ){
+      return true;
+    }
+    else{
+      return false;
+    }
 
-Padding buildEmailFormField(){
+  }
 
-  return Padding(
-      padding:
-      EdgeInsets.all(0),
-      child: Container(
-        height: 48,
-        decoration: BoxDecoration(
-          color: LightModeLightGreenColor,
-          borderRadius: new BorderRadius.circular(12.0),
-        ),
+  bool isOk() {
+    //print(_flag);
+    if (
 
-
-        child: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: TextFormField(
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                hintText: 'tohamiii@gmail.com',
-                hintStyle: InputTextStyle,
-                labelStyle: InputTextStyle,
-                suffixIcon:
-
-                CustomSuffixIcon(svgIcon: "assets/icons/mdi_email.svg",)
+    ifThereIsError(_EmailErrorMessage,_flag1) || ifThereIsError(_PasswordErrorMessage,_flag2)
 
 
-              //SvgPicture.asset("")
+    ) {
+      return false;
+    }
+    return true;
+  }
+  void validateEmail(String val) {
+    if (val.isEmpty) {
+      setState(() {
+        _EmailErrorMessage = kEmailNullError;
+      });
+    } else if (!emailValidatorRegExp.hasMatch(val)) {
+      setState(() {
+        _EmailErrorMessage = kInvalidEmailError;
+      });
+    } else {
+      setState(() {
+        _EmailErrorMessage = "";
+
+      });
+      _flag1=true;
+    }
+  }
+
+  void validatePassword(String val){
+
+    if (val.isEmpty) {
+      setState(() {
+        _PasswordErrorMessage = kPassNullError;
+      });
+    } else if (val.length<8) {
+      setState(() {
+        _PasswordErrorMessage = kShortPassError;
+      });
+    } else {
+      setState(() {
+        _PasswordErrorMessage = "";
+      });
+
+      _flag2=true;
+
+    }
+
+
+  }
+
+  Padding buildEmailFormField(){
+
+    return Padding(
+        padding:
+        EdgeInsets.all(0),
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: LightModeLightGreenColor,
+            borderRadius: new BorderRadius.circular(12.0),
+          ),
+
+
+          child: Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: TextFormField(
+              onChanged: (val) {
+                // val = _pass;
+                validateEmail(val);
+              },
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  hintText: 'tohamiii@gmail.com',
+                  hintStyle: InputTextStyle,
+                  labelStyle: InputTextStyle,
+                  suffixIcon:
+
+                  CustomSuffixIcon(svgIcon: "assets/icons/mdi_email.svg",)
+
+
+                //SvgPicture.asset("")
+
+              ),
 
             ),
-
           ),
-        ),
 
 
-      ))
-
-
-
-  ;
+        ))
 
 
 
-}
-Padding buildPasswordFormField(){
-
-  return Padding(
-      padding:
-      EdgeInsets.all(0),
-      child: Container(
-        height: 48,
-        decoration: BoxDecoration(
-          color: LightModeLightGreenColor,
-          borderRadius: new BorderRadius.circular(12.0),
-        ),
+    ;
 
 
-        child: Padding(
-          padding: EdgeInsets.only(left: 12),
-          child: TextFormField(
-            obscureText: true,
-            decoration: InputDecoration(
-                border: InputBorder.none,
-                //hintText: '12345678',
-                hintStyle: InputTextStyle ,
-                labelStyle: InputTextStyle,
-                suffixIcon:
 
-                CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+  }
+  Padding buildPasswordFormField(){
+
+    return Padding(
+        padding:
+        EdgeInsets.all(0),
+        child: Container(
+          height: 48,
+          decoration: BoxDecoration(
+            color: LightModeLightGreenColor,
+            borderRadius: new BorderRadius.circular(12.0),
+          ),
 
 
-              //SvgPicture.asset("")
+          child: Padding(
+            padding: EdgeInsets.only(left: 12),
+            child: TextFormField(
+              obscureText: true,
+              onChanged: (val) {
+                // val = _pass;
+                validatePassword(val);
+              },
+              decoration: InputDecoration(
+                  border: InputBorder.none,
+                  //hintText: '12345678',
+                  hintStyle: InputTextStyle ,
+                  labelStyle: InputTextStyle,
+                  suffixIcon:
+
+                  CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+
+
+                //SvgPicture.asset("")
+
+              ),
 
             ),
-
           ),
-        ),
 
 
-      ))
+        ))
 
 
 
-  ;
+    ;
 
+
+
+  }
 
 
 }
