@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/components/already_have_account.dart';
 import 'package:graduation/components/row_of_socal_card.dart';
 import 'package:graduation/models/login_request_model.dart';
+import 'package:graduation/models/register_request_model.dart';
 import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 
@@ -43,19 +44,41 @@ class Body extends StatelessWidget {
                   SizedBox(height: SizeConfig.screenHeight*0.075,),
                   DefaultButton(text:"Sign Up",press:(){
                    // Navigator.pushNamed(context, SignUpScreen.routeName);
-                    LoginRequestModel model = LoginRequestModel(
-                        email:"mahmoud.yasser.fci3@gmail.com",
-                        password:"123456789"
-                    );
-                    APIService.login(model).then((response) =>{
-                      if(response){
-                        print("succeed "),
-                        Navigator.pushNamed(context, SignUpScreen.routeName)
-                      }
-                      else{
-                        print("fail")
-                    }
-                    });
+
+                   //  LoginRequestModel model = LoginRequestModel(
+                   //      email:"mahmoud.yasser.fci3@gmail.com",
+                   //      password:"123456789"
+                   //  );
+                   //  APIService.login(model).then((response) =>{
+                   //    if(response){
+                   //      print("succeed "),
+                   //      Navigator.pushNamed(context, SignUpScreen.routeName)
+                   //    }
+                   //    else{
+                   //      print("fail")
+                   //  }
+                   //  });
+
+                    // RegisterRequestModel model = RegisterRequestModel(
+                    //     first_name:"Emannnnnnn",
+                    //     last_name:"Khaled",
+                    //     college:"Computer Science",
+                    //     university:"Suez University",
+                    //     gender:"Female",
+                    //     email:"Emannnnnnn.yasser.fci3@gmail.com",
+                    //     password:"123456789",
+                    //     carbon_em:3.1
+                    //
+                    // );
+                    // APIService.register(model).then((response) =>{
+                    //   if(response.token != null){
+                    //     print("succeed "),
+                    //     Navigator.pushNamed(context, SignUpScreen.routeName)
+                    //   }
+                    //   else{
+                    //     print("fail")
+                    //   }
+                    // });
 
 
                   }),
