@@ -1,6 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/size_config.dart';
 
+// Api url & end points
+
+const String baseUrl = '172.18.95.81:5000';
+const String registerEndpoint = '/register';
+const String loginEndpoint = '/login';
+const String getAllUsersEndpoint = '/all_user';
+const String getUserByIdEndpoint = '/user/<int:id>';
+const String googleLoginEndpoint = '/api/login/google';
+const String googleRegisterEndpoint = '/api/auth/google';
+const String registerOauthEndpoint = '/register_Oauth';
+const String LogoutEndpoint = '/api/logout';
+const String forgetPasswordEndpoint = '/forgetPassword';
+const String verifyOTPEndpoint = '/verify';
+const String resetPasswordEndpoint = '/resetPassword';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Light mode colors
 
 const LightModeMainBackgroundColor = Color(0xFFFFFFFF);
@@ -12,14 +45,7 @@ const LightModeHeaderColor = Color(0xFF474747);
 const LightModeSmallTextColor = Color(0xFF4D4B4B);
 const LightGray = Color(0xFFF2F1F1);
 const Red = Color(0xFFEB4335);
-//
-// // Dark mode colors
-// const DarkModeMainBackgroundColor = Color(0xFF6C63FF);
-// const DarkModeWhiteColor = Color(0xFFF3F2FF);
-// const DarkModeLabelAndHeadersColor = Color(0xFFFFFFFF);
-// const DarkModeSmallTextColor = Color(0xFFF2F1F1);
-//
-//
+
 
 final LightModeHeadersStyle = TextStyle(
   fontSize: getProportionateScreenWidth(21) ,  //26

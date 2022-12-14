@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/components/already_have_account.dart';
 import 'package:graduation/components/row_of_socal_card.dart';
+import 'package:graduation/models/login_request_model.dart';
+import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 
 import '../../../components/default_button.dart';
@@ -40,7 +42,20 @@ class Body extends StatelessWidget {
                   Text("Taking control of our energy \nconsumption to make our planet safe",textAlign: TextAlign.center,style: LightModeSmallTextStyle,),
                   SizedBox(height: SizeConfig.screenHeight*0.075,),
                   DefaultButton(text:"Sign Up",press:(){
-                    Navigator.pushNamed(context, SignUpScreen.routeName);
+                   // Navigator.pushNamed(context, SignUpScreen.routeName);
+                    LoginRequestModel model = LoginRequestModel(
+                        email:"mahmoud.yasser.fci3@gmail.com",
+                        password:"123456789"
+                    );
+                    APIService.login(model).then((response) =>{
+                      if(response){
+                        print("succeed "),
+                        Navigator.pushNamed(context, SignUpScreen.routeName)
+                      }
+                      else{
+                        print("fail")
+                    }
+                    });
 
 
                   }),

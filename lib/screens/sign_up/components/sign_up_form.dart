@@ -34,6 +34,12 @@ class _SignUpFormState extends State<SignUpForm> {
   bool _flag4 = false;
   bool _flag5 = false ;
 
+
+  TextEditingController fNameController = TextEditingController();
+  TextEditingController sNameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -144,6 +150,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: fNameController,
               onSaved: (newValue) => fName = newValue!,
               onChanged: (val) {
                 validateFirstName(val);
@@ -194,6 +201,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: sNameController,
               onSaved: (newValue) => sName = newValue!,
               onChanged: (val) {
                 validateSecondName(val);
@@ -238,6 +246,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: emailController,
               onSaved: (newValue) => email = newValue!,
               keyboardType: TextInputType.emailAddress,
               onChanged: (val) {
@@ -286,6 +295,7 @@ class _SignUpFormState extends State<SignUpForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: passwordController,
               //controller: _pass,
               onSaved: (newValue) => password = newValue,
               obscureText: true,
