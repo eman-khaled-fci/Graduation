@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:graduation/components/already_have_account.dart';
 import 'package:graduation/components/row_of_socal_card.dart';
+import 'package:graduation/models/forget_password_request_model.dart';
 import 'package:graduation/models/login_request_model.dart';
 import 'package:graduation/models/register_request_model.dart';
+import 'package:graduation/models/reset_password_request_model.dart';
+import 'package:graduation/models/verify_request_model.dart';
 import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 
@@ -79,6 +82,74 @@ class Body extends StatelessWidget {
                     //     print("fail")
                     //   }
                     // });
+
+
+
+
+
+                    //
+                    // ForgetPasswordRequestModel model = ForgetPasswordRequestModel(
+                    //
+                    //     email:"Emannnnnnn.yasser.fci3@gmail.com",
+                    //
+                    //
+                    // );
+                    // APIService.forgetPassword(model).then((response) =>{
+                    //   if(response.status != "email doesn't exist"){
+                    //     print("succeed 1"),
+                    //     print(response.status),
+                    //     Navigator.pushNamed(context, SignUpScreen.routeName)
+                    //   }
+                    //   else{
+                    //     print("fail")
+                    //   }
+                    // });
+
+
+
+                    //
+                    // VerifyRequestModel model = VerifyRequestModel(
+                    //
+                    //   otp:"1234",
+                    //
+                    //
+                    // );
+                    // APIService.verify(model).then((response) =>{
+                    //   if(response.status == "Not verified"){
+                    //     print("succeed 2"),
+                    //     print(response.status),
+                    //     Navigator.pushNamed(context, SignUpScreen.routeName)
+                    //   }
+                    //   else{
+                    //     print("fail"),
+                    //     print(response.status),
+                    //   }
+                    // });
+
+
+
+                    ResetPasswordRequestModel model = ResetPasswordRequestModel(
+
+                      password:"12341234123412341234",
+
+
+                    );
+                    APIService.resetPassword(model).then((response) =>{
+                        print(response.error)
+                      // if(response.error == "Invalid session data"){
+                      //   print("succeed 3"),
+                      //   print(response.error),
+                      //   Navigator.pushNamed(context, SignUpScreen.routeName)
+                      // }
+                      // else{
+                      //   print("fail"),
+                      //   print(response.error),
+                      //
+                      //
+                      // }
+                    });
+
+
 
 
                   }),
