@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/constants.dart';
-import 'package:graduation/screens/complete_profile/components/gender_form.dart';
+import 'package:graduation/models/register_request_model.dart';
+import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/sign_up/sign_up_screen.dart';
+import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
-
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../components/default_button.dart';
 
 
 class CompleteProfileForm extends StatefulWidget {
-  const CompleteProfileForm({Key? key}) : super(key: key);
+  final Map<String,String> firstSignUpScreenData;
+  const CompleteProfileForm({Key? key, required this.firstSignUpScreenData}) : super(key: key);
 
   @override
   State<CompleteProfileForm> createState() => _CompleteProfileFormState();
@@ -20,13 +24,16 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
   String? newpassword;
   String? conform_password;
-
+  String gender="male";
   String _universityErrorMessage = '';
   String _collegeErrorMessage = '';
   bool _flag1 = false;
   bool _flag2 = false;
 
 
+  TextEditingController universityController = TextEditingController();
+  TextEditingController collegeController = TextEditingController();
+  TextEditingController genderController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -38,10 +45,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
           SizedBox(height: SizeConfig.screenHeight*0.019,),
           buildUniversityNameFormField(),
-          // Align(child: Padding(
-          //   padding: const EdgeInsets.only(left: 12),
-          //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
-          // ),alignment: Alignment.topLeft,),
+          Align(child: Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text(_universityErrorMessage,style: ErrorsTextStyle,),
+          ),alignment: Alignment.topLeft,),
           SizedBox(height: SizeConfig.screenHeight*0.03,),
 
 
@@ -49,10 +56,10 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           Align(child: Text("College",style: textStyle,), alignment: Alignment.topLeft,),
           SizedBox(height: SizeConfig.screenHeight*0.012,),
           buildCollegeNameFormField(),
-          // Align(child: Padding(
-          //   padding: const EdgeInsets.only(left: 12),
-          //   child: Text("Name should be at Least 3 chars !",style: ErrorsTextStyle,),
-          // ),alignment: Alignment.topLeft,),
+          Align(child: Padding(
+            padding: const EdgeInsets.only(left: 12),
+            child: Text(_collegeErrorMessage,style: ErrorsTextStyle,),
+          ),alignment: Alignment.topLeft,),
           SizedBox(height: SizeConfig.screenHeight*0.01,),
 
 
@@ -60,11 +67,150 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     Align(child: Text("Gender",style: textStyle),alignment: Alignment.centerLeft,),
 
         SizedBox(height: SizeConfig.screenHeight*0.03,),
-        GenderForm(),
+        // GenderForm(),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            Container(
+              width: 140,
+              height: 160,
+              decoration: BoxDecoration(
+                  color: LightGray,
+                  borderRadius: new BorderRadius.circular(14)
+
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Align(
+
+                      alignment: Alignment.topLeft,
+                      child:Transform.scale(
+                        scale: 1.3,
+                        child: RadioListTile(
+                            activeColor: LightModeMainColor,
+                            value: "Male",
+                            groupValue: gender,
+                            onChanged:(value){
+                              setState(() {
+                                gender = value.toString();
+                              });
+                            }
+                        ),
+
+
+
+                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        //   value: value1,
+                        //   onChanged: (bool? value) {
+                        //     setState(() {
+                        //       this.value1 = value!;
+                        //     }
+                        //     );
+                        //   },
+                        //   activeColor: LightModeMainColor,
+                        //   checkColor: Colors.white,
+                        //   autofocus: true,
+                        // ),
+                      )
+                  )
+                  ,
+                  Align(child: SvgPicture.asset("assets/images/undraw_male_avatar_re_y880.svg" , height:SizeConfig.screenHeight*.09,), alignment: Alignment.topCenter,),
+                  Text("Male",style: textStyle,)
+
+
+                ],
+
+              ),
+
+            ),
+            SizedBox(height: SizeConfig.screenHeight*0.09,),
+            Container(
+              width: 140,
+              height: 160,
+              decoration: BoxDecoration(
+                  color: LightGray,
+                  borderRadius: new BorderRadius.circular(4)
+
+              ),
+              child: Column(
+                children: [
+                  Align(
+
+                      alignment: Alignment.topLeft,
+                      child:Transform.scale(
+                          scale: 1.3,
+
+                          child: RadioListTile(
+                              activeColor: LightModeMainColor,
+                              value: "Female",
+                              groupValue: gender,
+                              onChanged:(value){
+                                setState(() {
+                                  gender = value.toString();
+                                });
+                              }
+                          )
+
+
+                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        //   value: value2,
+                        //   onChanged: (bool? value) {
+                        //     setState(() {
+                        //       this.value2 = value!;
+                        //     }
+                        //     );
+                        //   },
+                        //   activeColor: LightModeMainColor,
+                        //   checkColor: Colors.white,
+                        //   autofocus: true,
+                        // ),
+                      ))
+                  ,
+                  Align(child: SvgPicture.asset("assets/images/undraw_female_avatar_re_l6cx.svg" , height:SizeConfig.screenHeight*.09,), alignment: Alignment.topCenter,),
+                  Text("Female",style: textStyle,),
+
+                ],
+
+              ),
+
+
+            ),
+
+
+          ],
+
+
+        ),
+
+
         SizedBox(height: SizeConfig.screenHeight*0.08,),
         Container(
           child: DefaultButton(text: "Register",press:isOk()? () {
             //Navigator
+            //
+
+
+            RegisterRequestModel model = RegisterRequestModel(
+                first_name: widget.firstSignUpScreenData["firstName"] ,
+                last_name:widget.firstSignUpScreenData["secondName"],
+                college:collegeController.text,
+                university:universityController.text,
+                gender:gender,
+                email:widget.firstSignUpScreenData["email"],
+                password:widget.firstSignUpScreenData["password"],
+                //carbon_em:3.1
+
+            );
+            APIService.register(model).then((response) =>{
+              if(response.token != null){
+                print("succeed "),
+                Navigator.pushNamed(context, HomeScreen.routeName)
+              }
+              else{
+                print("fail")
+              }
+            });
 
           }:null ,),alignment: Alignment.bottomCenter,),
         SizedBox(height: SizeConfig.screenHeight*0.03),
@@ -75,7 +221,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
 
   Padding buildUniversityNameFormField(){
-
     return Padding(
         padding:
         EdgeInsets.all(0),
@@ -90,6 +235,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: universityController,
               onChanged: (val) {
                 validateUniversityField(val);
 
@@ -128,6 +274,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: collegeController,
               onChanged: (val) {
                 validateCollegeField(val);
 
@@ -186,7 +333,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       });
 
       // will we check if the input exists in a list
-    } else if (val.length < 4) {
+    } else if (val.length < 2) {
       setState(() {
         _universityErrorMessage = kUniversityInvalidError;
       });
@@ -211,7 +358,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
       });
 
       // will we check if the input exists in a list
-    } else if (val.length < 4) {
+    } else if (val.length < 2) {
       setState(() {
         _collegeErrorMessage = kCollegeInvalidError;
       });

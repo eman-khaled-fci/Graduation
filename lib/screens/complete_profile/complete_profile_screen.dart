@@ -4,14 +4,17 @@ import 'package:graduation/size_config.dart';
 import 'package:graduation/screens/complete_profile/components/body.dart';
 
 class   CompleteProfileScreen extends StatelessWidget {
+  final Map<String,String> firstSignUpScreenData;
   static String routeName = "/complete_profile";
-  const CompleteProfileScreen({Key? key}) : super(key: key);
+  const CompleteProfileScreen( {Key? key
+  ,  required this.firstSignUpScreenData
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
-      body: Body(),
+      body: Body(firstSignUpScreenData: firstSignUpScreenData,),
     );
   }
 }

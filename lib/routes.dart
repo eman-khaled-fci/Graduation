@@ -17,5 +17,6 @@ final Map  <String, WidgetBuilder> routes = {
   OtpScreen.routeName:((context) => OtpScreen()),
   ForgetPasswordScreen.routeName:((context) => ForgetPasswordScreen()),
   CreateNewPasswordScreen.routeName:((context) => CreateNewPasswordScreen()),
-  CompleteProfileScreen.routeName:((context) => CompleteProfileScreen()),
+  CompleteProfileScreen.routeName:((context) => CompleteProfileScreen(firstSignUpScreenData: {},)),
+
 };

@@ -39,6 +39,9 @@ class _SignUpFormState extends State<SignUpForm> {
   TextEditingController sNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  
+  final Map<String,String> firstSignUpScreenData = {};
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,9 +110,30 @@ class _SignUpFormState extends State<SignUpForm> {
             //   print("_FirstNameErrorMessage : "+_FirstNameErrorMessage);
             //   Navigator.pushNamed(context, CompleteProfileScreen.routeName);
             // }
-            print(_FirstNameErrorMessage);
-            Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+            
+            firstSignUpScreenData["firstName"]=fNameController.text;
+            firstSignUpScreenData["secondName"]=sNameController.text;
+            firstSignUpScreenData["email"]=emailController.text;
+            firstSignUpScreenData["password"]=passwordController.text;
+           // print(_FirstNameErrorMessage);
+           //  Navigator.pushNamed(context,
+           //      MaterialPageRoute(
+           //        builder: (context) => CompleteProfileScreen(firstSignUpScreenData:firstSignUpScreenData),
+           //      )
+           //
+           //      );
 
+            // Navigator.pushNamed(context, CompleteProfileScreen.routeName , arguments: firstSignUpScreenData);
+
+
+
+
+
+
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                builder: (context) => CompleteProfileScreen(firstSignUpScreenData:firstSignUpScreenData,)));
           }
           :null  ),
 
@@ -377,12 +401,7 @@ class _SignUpFormState extends State<SignUpForm> {
 
     ;
   }
-  // bool FinishValidation(bool _flag){
-  //   if(_flag == true){
-  //     return true;
-  //   }
-  //   return false;
-  // }
+
   bool ifThereIsError(String errorMessage , bool _flag){
     if(errorMessage.isNotEmpty ){
       return true;

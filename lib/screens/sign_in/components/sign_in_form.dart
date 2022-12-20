@@ -3,6 +3,9 @@ import 'package:graduation/components/already_have_account.dart';
 import 'package:graduation/components/custom_suffix_icon.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/models/login_request_model.dart';
+import 'package:graduation/screens/sign_up/sign_up_screen.dart';
+import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -22,6 +25,9 @@ class _SignInFormState extends State<SignInForm> {
   String _PasswordErrorMessage = '';
   bool _flag1 = false;
   bool _flag2 = false;
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
 
 
   @override
@@ -80,6 +86,30 @@ class _SignInFormState extends State<SignInForm> {
           SizedBox(height: SizeConfig.screenHeight*0.04),
           DefaultButton(text: "Log in",press:isOk()? () {
             //Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
+
+            // mahmoud.yasser.fci3@gmail.com
+            // 123456789
+            // print("email : "+emailController.text);
+            // print("password : "+ passwordController.text);
+
+
+             LoginRequestModel model = LoginRequestModel(
+                 email:emailController.text,
+                 password:passwordController.text
+             );
+             APIService.login(model).then((response) =>{
+               if(response){
+                 print("succeed "),
+                 Navigator.pushNamed(context, SignUpScreen.routeName)
+               }
+               else{
+                 print("fail")
+
+             }
+             });
+
+
+
 
           }:null,),
           SizedBox(height: SizeConfig.screenHeight*0.02),
@@ -171,6 +201,7 @@ class _SignInFormState extends State<SignInForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: emailController,
               onChanged: (val) {
                 // val = _pass;
                 validateEmail(val);
@@ -218,6 +249,7 @@ class _SignInFormState extends State<SignInForm> {
           child: Padding(
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
+              controller: passwordController,
               obscureText: true,
               onChanged: (val) {
                 // val = _pass;
