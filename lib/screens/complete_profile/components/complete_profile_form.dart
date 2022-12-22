@@ -35,6 +35,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   TextEditingController collegeController = TextEditingController();
   TextEditingController genderController = TextEditingController();
   @override
+
   Widget build(BuildContext context) {
     return Column(
       children: [
@@ -43,7 +44,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           alignment: Alignment.topLeft,),
 
 
-          SizedBox(height: SizeConfig.screenHeight*0.019,),
+          SizedBox(height: SizeConfig.screenHeight*0.012,),
           buildUniversityNameFormField(),
           Align(child: Padding(
             padding: const EdgeInsets.only(left: 12),
@@ -52,7 +53,6 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: SizeConfig.screenHeight*0.03,),
 
 
-          SizedBox(height: SizeConfig.screenHeight*0.02,),
           Align(child: Text("College",style: textStyle,), alignment: Alignment.topLeft,),
           SizedBox(height: SizeConfig.screenHeight*0.012,),
           buildCollegeNameFormField(),
@@ -63,7 +63,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
           SizedBox(height: SizeConfig.screenHeight*0.01,),
 
 
-    SizedBox(height: SizeConfig.screenHeight*0.05,),
+    SizedBox(height: SizeConfig.screenHeight*0.02,),
     Align(child: Text("Gender",style: textStyle),alignment: Alignment.centerLeft,),
 
         SizedBox(height: SizeConfig.screenHeight*0.03,),
@@ -82,8 +82,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Align(
 
+                  Align(
                       alignment: Alignment.topLeft,
                       child:Transform.scale(
                         scale: 1.3,
@@ -100,6 +100,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
 
 
+
+
                         //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         //   value: value1,
                         //   onChanged: (bool? value) {
@@ -112,7 +114,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                         //   checkColor: Colors.white,
                         //   autofocus: true,
                         // ),
-                      )
+                     )
                   )
                   ,
                   Align(child: SvgPicture.asset("assets/images/undraw_male_avatar_re_y880.svg" , height:SizeConfig.screenHeight*.09,), alignment: Alignment.topCenter,),
@@ -130,7 +132,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               height: 160,
               decoration: BoxDecoration(
                   color: LightGray,
-                  borderRadius: new BorderRadius.circular(4)
+                  borderRadius: new BorderRadius.circular(14)
 
               ),
               child: Column(
