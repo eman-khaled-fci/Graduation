@@ -23,6 +23,9 @@ class _SignUpFormState extends State<SignUpForm> {
   var _pass;
   var _confirmPass;
 
+  var _isObscured;
+  var _isObscured2;
+
   String _EmailErrorMessage = '';
   String _PasswordErrorMessage = '';
   String _FirstNameErrorMessage = '';
@@ -44,6 +47,11 @@ class _SignUpFormState extends State<SignUpForm> {
 
 
   @override
+  void initState(){
+    super.initState();
+    _isObscured = true;
+    _isObscured2=true;
+  }
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
@@ -108,7 +116,7 @@ class _SignUpFormState extends State<SignUpForm> {
           DefaultButton(text: "Continue", press:isOk()? () {
             // if (_formKey.currentState!.validate()) {
             //   print("_FirstNameErrorMessage : "+_FirstNameErrorMessage);
-            //   Navigator.pushNamed(context, CompleteProfileScreen.routeName);
+               Navigator.pushNamed(context, CompleteProfileScreen.routeName);
             // }
             
             firstSignUpScreenData["firstName"]=fNameController.text;
@@ -322,7 +330,7 @@ class _SignUpFormState extends State<SignUpForm> {
               controller: passwordController,
               //controller: _pass,
               onSaved: (newValue) => password = newValue,
-              obscureText: true,
+              obscureText: _isObscured,
               onChanged: (val) {
                // val = _pass;
                 validatePassword(val);
@@ -333,10 +341,19 @@ class _SignUpFormState extends State<SignUpForm> {
                   //hintText: '12345678',
                   hintStyle: InputTextStyle,
                   labelStyle: InputTextStyle,
-                  suffixIcon:
+                  suffixIcon:IconButton(
+                    color: LightModeMainColor,
+                    padding: EdgeInsetsDirectional.only(end: 12.0),
+                    icon: _isObscured ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                    onPressed: (){
+                      setState(() {
+                        _isObscured =! _isObscured;
+                      });
+                    },
+                  )
 
-                  CustomSuffixIcon(
-                    svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+                  // CustomSuffixIcon(
+                  //   svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
 
 
                 //SvgPicture.asset("")
@@ -371,7 +388,7 @@ class _SignUpFormState extends State<SignUpForm> {
             child: TextFormField(
              controller: _confirmPass,
              // onSaved: (newValue) => conform_password = newValue,
-              obscureText: true,
+              obscureText: _isObscured2,
               onChanged: (val) {
                // _confirmPass = val;
                 validateConfirmPassword(val);
@@ -382,10 +399,20 @@ class _SignUpFormState extends State<SignUpForm> {
                   // hintText: '12345678',
                   hintStyle: InputTextStyle,
                   labelStyle: InputTextStyle,
-                  suffixIcon:
+                  suffixIcon:IconButton(
+                    color: LightModeMainColor,
+                    padding: EdgeInsetsDirectional.only(end: 12.0),
+                    icon: _isObscured2 ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                    onPressed: (){
+                      setState(() {
+                        _isObscured2 =! _isObscured2;
+                      });
+                    },
 
-                  CustomSuffixIcon(
-                    svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+                  )
+
+                  // CustomSuffixIcon(
+                  //   svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
 
 
                 //SvgPicture.asset("")

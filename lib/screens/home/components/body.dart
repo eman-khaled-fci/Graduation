@@ -46,7 +46,7 @@ class Body extends StatelessWidget {
                   Text("Taking control of our energy \nconsumption to make our planet safe",textAlign: TextAlign.center,style: LightModeSmallTextStyle,),
                   SizedBox(height: SizeConfig.screenHeight*0.075,),
                   DefaultButton(text:"Sign Up",press:(){
-                   // Navigator.pushNamed(context, SignUpScreen.routeName);
+                    Navigator.pushNamed(context, SignUpScreen.routeName);
 
                     // LoginRequestModel model = LoginRequestModel(
                     //     email:"Mayada.Mayada.fci3@gmail.com",

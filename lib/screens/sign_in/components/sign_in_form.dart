@@ -26,11 +26,20 @@ class _SignInFormState extends State<SignInForm> {
   bool _flag1 = false;
   bool _flag2 = false;
 
+  var _isObscured;
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
 
   @override
+  void initState(){
+    super.initState();
+    _isObscured = true;
+  }
+
+
+
   Widget build(BuildContext context) {
    return Form(
         key: _formKey,
@@ -222,17 +231,10 @@ class _SignInFormState extends State<SignInForm> {
 
             ),
           ),
-
-
-        ))
-
-
-
-    ;
-
-
-
+        ));
   }
+
+
   Padding buildPasswordFormField(){
 
     return Padding(
@@ -250,7 +252,7 @@ class _SignInFormState extends State<SignInForm> {
             padding: EdgeInsets.only(left: 12),
             child: TextFormField(
               controller: passwordController,
-              obscureText: true,
+              obscureText: _isObscured,
               onChanged: (val) {
                 // val = _pass;
                 validatePassword(val);
@@ -260,9 +262,21 @@ class _SignInFormState extends State<SignInForm> {
                   //hintText: '12345678',
                   hintStyle: InputTextStyle ,
                   labelStyle: InputTextStyle,
-                  suffixIcon:
+                  suffixIcon: IconButton(
+                    color: LightModeMainColor,
+                    padding: EdgeInsetsDirectional.only(end: 12.0),
+                    icon: _isObscured ? const Icon(Icons.visibility) : const Icon(Icons.visibility_off),
+                    onPressed: (){
+                      setState(() {
+                        _isObscured =! _isObscured;
+                      });
+                    },
 
-                  CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
+
+                  )
+
+                  //suffixIcon:
+                  //CustomSuffixIcon(svgIcon: "assets/icons/mdi_eye-lock-open.svg",)
 
 
                 //SvgPicture.asset("")
