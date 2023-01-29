@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:graduation/components/custom_suffix_icon.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/models/reset_password_request_model.dart';
 import 'package:graduation/screens/sign_in/sign_in_screen.dart';
+import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 
 class CraeteNewPasswordForm extends StatefulWidget {
@@ -52,6 +54,32 @@ class _CraeteNewPasswordFormState extends State<CraeteNewPasswordForm> {
         //SizedBox(height: SizeConfig.screenHeight*0.016,),
         DefaultButton(text: "Reset Password",press:isOk()? () {
          // Navigator.pushNamed(context, SignInScreen.routeName);
+
+          ResetPasswordRequestModel model = ResetPasswordRequestModel(
+
+            password:"1234"
+
+          );
+          APIService.resetPassword(model).then((response) =>{
+            //  print(response.status)
+            // print(response.status)
+            if(response.status == "Invalid session data"){
+              print("succeed"),
+              print(response.status),
+              Navigator.pushNamed(context, SignInScreen.routeName)
+
+            }
+            else{
+              print("fail"),
+              print(response.status),
+            }
+
+          });
+
+
+
+
+
 
 
         }:null,)

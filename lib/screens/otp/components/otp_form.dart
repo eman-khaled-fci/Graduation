@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/models/verify_request_model.dart';
+import 'package:graduation/screens/create_new_password/create_new_password_screen.dart';
+import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/sign_up/sign_up_screen.dart';
+import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 
 import '../../otp/components/body.dart';
@@ -19,6 +24,11 @@ class _OtpFormState extends State<OtpForm> {
   FocusNode? pin2FocusNode;
   FocusNode? pin3FocusNode;
   FocusNode? pin4FocusNode;
+
+  TextEditingController pin1Controller = TextEditingController();
+  TextEditingController pin2Controller = TextEditingController();
+  TextEditingController pin3Controller = TextEditingController();
+  TextEditingController pin4Controller = TextEditingController();
 
   @override
   void initState() {
@@ -72,6 +82,7 @@ class _OtpFormState extends State<OtpForm> {
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: TextFormField(
+                        controller: pin1Controller,
                         autofocus: true,
                         style: TextStyle(
                             fontSize: 24),
@@ -108,6 +119,7 @@ class _OtpFormState extends State<OtpForm> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      controller: pin2Controller,
                       focusNode: pin2FocusNode,
                       style: TextStyle(
                           fontSize: 24),
@@ -140,6 +152,7 @@ class _OtpFormState extends State<OtpForm> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      controller: pin3Controller,
                       focusNode: pin3FocusNode,
                       style: TextStyle(
                           fontSize: 24),
@@ -173,6 +186,7 @@ class _OtpFormState extends State<OtpForm> {
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
+                      controller: pin4Controller,
                       focusNode: pin4FocusNode,
                       style: TextStyle(
                           fontSize: 24),
@@ -189,8 +203,40 @@ class _OtpFormState extends State<OtpForm> {
                   ),
                 ),
               ),
-            ],
+
+    ],
           ),
+          SizedBox(height: SizeConfig.screenHeight*0.03),
+          DefaultButton(text: "Verify",press: (){
+            print(pin1Controller.text+pin2Controller.text+pin3Controller.text+pin4Controller.text,
+            );
+            VerifyRequestModel model = VerifyRequestModel(
+
+              otp:pin1Controller.text+pin2Controller.text+pin3Controller.text+pin4Controller.text,
+
+
+            );
+            APIService.verify(model).then((response) =>{
+             //  print(response.status)
+             // print(response.status)
+              if(response.status == "verified"){
+                print("succeed"),
+                print(response.status),
+                Navigator.pushNamed(context, CreateNewPasswordScreen.routeName)
+
+              }
+              else{
+                print("fail"),
+                print(response.status),
+              }
+
+            });
+
+
+
+
+          }),
+
 
         ],
       ),

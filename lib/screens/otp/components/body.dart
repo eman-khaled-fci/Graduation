@@ -54,13 +54,14 @@ class Body extends StatelessWidget {
           Align(child: Text("OTP Verification",style: LightModeHeadersStyle),alignment: Alignment.bottomCenter,),
           SizedBox(height: SizeConfig.screenHeight*0.02),
           OtpForm(),
-          SizedBox(height: SizeConfig.screenHeight*0.03),
-          DefaultButton(text: "Verify",press: (){
-
-            //execute some function
-            //go to create new password
-
-          },),
+          // SizedBox(height: SizeConfig.screenHeight*0.03),
+          // DefaultButton(text: "Verify",press: (){
+          //
+          //   //execute some function
+          //   //go to create new password
+          //
+          // },
+          // ),
           SizedBox(height: SizeConfig.screenHeight*0.02),
           RecieveOtp(),
 

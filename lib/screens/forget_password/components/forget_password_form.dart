@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:graduation/components/custom_suffix_icon.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/models/forget_password_request_model.dart';
 import 'package:graduation/screens/otp/otp_screen.dart';
+import 'package:graduation/screens/sign_up/sign_up_screen.dart';
+import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 
 class ForgetPasswordForm extends StatefulWidget {
@@ -15,6 +18,7 @@ class ForgetPasswordForm extends StatefulWidget {
 class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
   String _EmailErrorMessage = '';
   bool _flag1 = false;
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
       return Column(
@@ -27,6 +31,7 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
 
 
           TextFormField(
+            controller: emailController,
             keyboardType: TextInputType.emailAddress,
             onChanged: (val) {
               validateEmail(val);
@@ -55,7 +60,40 @@ class _ForgetPasswordFormState extends State<ForgetPasswordForm> {
 
           Container(
             child: DefaultButton(text: "Continue",press: (){
-              Navigator.pushNamed(context, OtpScreen.routeName);
+
+
+              //
+              //
+              //
+              // Navigator.pushNamed(context, OtpScreen.routeName);
+              //
+              //
+
+
+
+              ForgetPasswordRequestModel model = ForgetPasswordRequestModel(
+                email:emailController.text,
+              );
+              APIService.forgetPassword(model).then((response) =>{
+                if(response.status != "email doesn't exist"){
+                  print("succeed"),
+                  print(response.status),
+                  Navigator.pushNamed(context, OtpScreen.routeName)
+
+                }
+                else{
+                  print("fail")
+                }
+              });
+
+
+
+
+
+
+
+
+
 
             },),
           )

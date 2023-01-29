@@ -48,28 +48,29 @@ class Body extends StatelessWidget {
                   DefaultButton(text:"Sign Up",press:(){
                    // Navigator.pushNamed(context, SignUpScreen.routeName);
 
-                   //  LoginRequestModel model = LoginRequestModel(
-                   //      email:"mahmoud.yasser.fci3@gmail.com",
-                   //      password:"123456789"
-                   //  );
-                   //  APIService.login(model).then((response) =>{
-                   //    if(response){
-                   //      print("succeed "),
-                   //      Navigator.pushNamed(context, SignUpScreen.routeName)
-                   //    }
-                   //    else{
-                   //      print("fail")
-                   //  }
-                   //  });
+                    // LoginRequestModel model = LoginRequestModel(
+                    //     email:"Mayada.Mayada.fci3@gmail.com",
+                    //     password:"123456789123"
+                    // );
+                    // APIService.login(model).then((response) =>{
+                    //   if(response){
+                    //     print("succeed "),
+                    //     Navigator.pushNamed(context, SignUpScreen.routeName)
+                    //   }
+                    //   else{
+                    //     print("fail")
+                    // }
+                    // });
 
+                    //
                     // RegisterRequestModel model = RegisterRequestModel(
                     //     first_name:"Emannnnnnn",
                     //     last_name:"Khaled",
                     //     college:"Computer Science",
                     //     university:"Suez University",
                     //     gender:"Female",
-                    //     email:"Emannnnnnn.yasser.fci3@gmail.com",
-                    //     password:"123456789",
+                    //     email:"Mayada.Mayada.fci3@gmail.com",
+                    //     password:"123456789123",
                     //     carbon_em:3.1
                     //
                     // );
@@ -82,11 +83,11 @@ class Body extends StatelessWidget {
                     //     print("fail")
                     //   }
                     // });
+                    //
+                    //
 
 
-
-
-
+                    //
                     //
                     // ForgetPasswordRequestModel model = ForgetPasswordRequestModel(
                     //
@@ -107,7 +108,7 @@ class Body extends StatelessWidget {
 
 
 
-                    //
+
                     // VerifyRequestModel model = VerifyRequestModel(
                     //
                     //   otp:"1234",
