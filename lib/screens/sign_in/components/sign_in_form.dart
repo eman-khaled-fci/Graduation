@@ -25,7 +25,6 @@ class _SignInFormState extends State<SignInForm> {
   String _PasswordErrorMessage = '';
   bool _flag1 = false;
   bool _flag2 = false;
-
   var _isObscured;
 
   TextEditingController emailController = TextEditingController();
