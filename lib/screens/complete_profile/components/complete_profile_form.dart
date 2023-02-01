@@ -25,6 +25,11 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
   String? newpassword;
   String? conform_password;
   String gender="male";
+
+
+  bool value1=true;
+  bool value2=true;
+
   String _universityErrorMessage = '';
   String _collegeErrorMessage = '';
   bool _flag1 = false;
@@ -50,7 +55,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
             padding: const EdgeInsets.only(left: 12),
             child: Text(_universityErrorMessage,style: ErrorsTextStyle,),
           ),alignment: Alignment.topLeft,),
-          SizedBox(height: SizeConfig.screenHeight*0.03,),
+          SizedBox(height: SizeConfig.screenHeight*0.02,),
 
 
           Align(child: Text("College",style: textStyle,), alignment: Alignment.topLeft,),
@@ -66,7 +71,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
     SizedBox(height: SizeConfig.screenHeight*0.02,),
     Align(child: Text("Gender",style: textStyle),alignment: Alignment.centerLeft,),
 
-        SizedBox(height: SizeConfig.screenHeight*0.03,),
+        SizedBox(height: SizeConfig.screenHeight*0.04,),
         // GenderForm(),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -76,7 +81,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               height: 160,
               decoration: BoxDecoration(
                   color: LightGray,
-                  borderRadius: new BorderRadius.circular(14)
+                  borderRadius: new BorderRadius.circular(12)
 
               ),
               child: Column(
@@ -86,18 +91,29 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                   Align(
                       alignment: Alignment.topLeft,
                       child:Transform.scale(
-                        scale: 1.3,
-                        child: RadioListTile(
-                            activeColor: LightModeMainColor,
-                            value: "Male",
-                            groupValue: gender,
-                            onChanged:(value){
-                              setState(() {
-                                gender = value.toString();
-                              });
-                            }
-                        ),
+                        scale: 1.5,
+                        // child: RadioListTile(
+                        //     activeColor: LightModeMainColor,
+                        //     value: "Male",
+                        //     groupValue: gender,
+                        //     onChanged:(value){
+                        //       setState(() {
+                        //         gender = value.toString();
+                        //       });
+                        //     }
+                        // ),
 
+                        child: Checkbox(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          value: value1,
+                          autofocus: true,
+                          activeColor: LightModeMainColor,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.value1 = value! ;
+                            });
+                          },
+                        ),
 
 
 
@@ -117,7 +133,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                      )
                   )
                   ,
-                  Align(child: SvgPicture.asset("assets/images/undraw_male_avatar_re_y880.svg" , height:SizeConfig.screenHeight*.09,), alignment: Alignment.topCenter,),
+                  Align(child: SvgPicture.asset("assets/images/undraw_male_avatar_re_y880.svg" , height:SizeConfig.screenHeight*.092,), alignment: Alignment.topCenter,),
                   Text("Male",style: textStyle,)
 
 
@@ -132,7 +148,7 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
               height: 160,
               decoration: BoxDecoration(
                   color: LightGray,
-                  borderRadius: new BorderRadius.circular(14)
+                  borderRadius: new BorderRadius.circular(12)
 
               ),
               child: Column(
@@ -141,35 +157,64 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
 
                       alignment: Alignment.topLeft,
                       child:Transform.scale(
-                          scale: 1.3,
+                          scale: 1.5,
 
-                          child: RadioListTile(
-                              activeColor: LightModeMainColor,
-                              value: "Female",
-                              groupValue: gender,
-                              onChanged:(value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              }
-                          )
+                          // child: RadioListTile(
+                          //     activeColor: LightModeMainColor,
+                          //     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                          //     value: "Female",
+                          //     groupValue: gender,
+                          //     onChanged:(value){
+                          //       setState(() {
+                          //         gender = value.toString();
+                          //       });
+                          //     }
+                          // )
 
-
-                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                        //   value: value2,
-                        //   onChanged: (bool? value) {
-                        //     setState(() {
-                        //       this.value2 = value!;
-                        //     }
-                        //     );
-                        //   },
+                        // child: CheckboxListTile(
                         //   activeColor: LightModeMainColor,
-                        //   checkColor: Colors.white,
-                        //   autofocus: true,
+                        //   value: value2,
+                        //   controlAffinity: ListTileControlAffinity.leading,
+                        //   contentPadding: EdgeInsets.fromLTRB(14, 1, 0, 0),
+                        //   dense: true,
+                        //   onChanged: (bool? value){
+                        //     setState(() {
+                        //       this.value2 = value! ;
+                        //     });
+                        //   },
+                        //
                         // ),
-                      ))
+                        child: Checkbox(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          value: value2,
+                          onChanged:(bool? value){
+                            setState(() {
+                              this.value2 = value! ;
+                            });
+                          },
+                          activeColor: LightModeMainColor,
+                          checkColor: Colors.white,
+                          autofocus: true,
+
+                        ),
+
+
+
+                      //     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                      //     value: value2,
+                      //     onChanged: (bool? value) {
+                      //       setState(() {
+                      //         this.value2 = value!;
+                      //       }
+                      //       );
+                      //     },
+                      //     activeColor: LightModeMainColor,
+                      //     checkColor: Colors.white,
+                      //     autofocus: true,
+                      //   ),
+                       ))
                   ,
-                  Align(child: SvgPicture.asset("assets/images/undraw_female_avatar_re_l6cx.svg" , height:SizeConfig.screenHeight*.09,), alignment: Alignment.topCenter,),
+                  Align(child: SvgPicture.asset("assets/images/undraw_female_avatar_re_l6cx.svg" , height:SizeConfig.screenHeight*.092,), alignment: Alignment.topCenter,),
                   Text("Female",style: textStyle,),
 
                 ],

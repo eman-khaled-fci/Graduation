@@ -3,7 +3,7 @@ import 'package:graduation/size_config.dart';
 
 // Api url & end points
 
-const String baseUrl = '192.168.1.10:5000';
+const String baseUrl = '192.168.1.7:5000';
 const String registerEndpoint = '/register';
 const String loginEndpoint = '/login';
 const String getAllUsersEndpoint = '/all_user';

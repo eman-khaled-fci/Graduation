@@ -6,7 +6,6 @@ import 'package:graduation/screens/complete_profile/complete_profile_screen.dart
 import 'package:graduation/screens/home/home_screen.dart';
 import 'package:graduation/screens/sign_up/components/sign_up_form.dart';
 import 'package:graduation/size_config.dart';
-
 import 'package:graduation/constants.dart';
 
 class Body extends StatelessWidget {
