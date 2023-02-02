@@ -20,56 +20,72 @@ class Body extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.all(30),
           child: SingleChildScrollView(
-
-        child: Column(
-        children: [
-          TopBar(text:"",press: (){
-            Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
-
-
-          },),
-          SizedBox(height: SizeConfig.screenHeight*0.03,),
-          Align(child: SvgPicture.asset("assets/new/otp.svg" , height:SizeConfig.screenHeight*.33,), alignment: Alignment.topCenter,),
-          SizedBox(height: SizeConfig.screenHeight*0.02,),
-          Align(child: Text("Check your messages" , style: LightModeHeadersStyle ),alignment: Alignment.topLeft,),
-          // Text("we have sent a code to your phone number,")
-          SizedBox(height: SizeConfig.screenHeight*0.02),
-          Align(
-            child:
-            RichText(
-            text: TextSpan(
-              // Note: Styles for TextSpans must be explicitly defined.
-              // Child text spans will inherit styles from parent
-              style: LightModeSmallTextStyle,
-              children: <TextSpan>[
-                TextSpan(text: 'We have sent a code to your phone \nnumber, '),
-                TextSpan(text: ' please ', style:LogInTextStyle),
-                TextSpan(text: 'enter the code...'),
+            child: Column(
+              children: [
+                TopBar(
+                  text: "",
+                  press: () {
+                    Navigator.pushNamed(
+                        context, ForgetPasswordScreen.routeName);
+                  },
+                ),
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.03,
+                ),
+                Align(
+                  child: SvgPicture.asset(
+                    "assets/new/otp.svg",
+                    height: SizeConfig.screenHeight * .33,
+                  ),
+                  alignment: Alignment.topCenter,
+                ),
+                SizedBox(
+                  height: SizeConfig.screenHeight * 0.02,
+                ),
+                Align(
+                  child:
+                      Text("Check your messages", style: LightModeHeadersStyle),
+                  alignment: Alignment.topLeft,
+                ),
+                // Text("we have sent a code to your phone number,")
+                SizedBox(height: SizeConfig.screenHeight * 0.02),
+                Align(
+                  child: RichText(
+                    text: TextSpan(
+                      // Note: Styles for TextSpans must be explicitly defined.
+                      // Child text spans will inherit styles from parent
+                      style: LightModeSmallTextStyle,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text:
+                                'We have sent a code to your phone \nnumber, '),
+                        TextSpan(text: ' please ', style: LogInTextStyle),
+                        TextSpan(text: 'enter the code...'),
+                      ],
+                    ),
+                  ),
+                  alignment: Alignment.topLeft,
+                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.05),
+                Align(
+                  child: Text("OTP Verification", style: LightModeHeadersStyle),
+                  alignment: Alignment.bottomCenter,
+                ),
+                SizedBox(height: SizeConfig.screenHeight * 0.02),
+                OtpForm(),
+                // SizedBox(height: SizeConfig.screenHeight*0.03),
+                // DefaultButton(text: "Verify",press: (){
+                //
+                //   //execute some function
+                //   //go to create new password
+                //
+                // },
+                // ),
+                SizedBox(height: SizeConfig.screenHeight * 0.02),
+                RecieveOtp(),
               ],
             ),
           ),
-            alignment: Alignment.topLeft,
-          ),
-          SizedBox(height: SizeConfig.screenHeight*0.05),
-          Align(child: Text("OTP Verification",style: LightModeHeadersStyle),alignment: Alignment.bottomCenter,),
-          SizedBox(height: SizeConfig.screenHeight*0.02),
-          OtpForm(),
-          // SizedBox(height: SizeConfig.screenHeight*0.03),
-          // DefaultButton(text: "Verify",press: (){
-          //
-          //   //execute some function
-          //   //go to create new password
-          //
-          // },
-          // ),
-          SizedBox(height: SizeConfig.screenHeight*0.02),
-          RecieveOtp(),
-
-
-  ],
-),
-          ),
-
         ),
       ),
     );
