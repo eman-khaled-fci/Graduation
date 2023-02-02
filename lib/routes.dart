@@ -6,8 +6,10 @@ import 'package:graduation/screens/create_new_password/create_new_password_scree
 import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
 import 'package:graduation/screens/otp/otp_screen.dart';
+import 'package:graduation/screens/questions/question_screen.dart';
 import 'package:graduation/screens/sign_in/sign_in_screen.dart';
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
+import 'package:graduation/screens/web_page/web_page_screen.dart';
 
 final Map  <String, WidgetBuilder> routes = {
 
@@ -18,5 +20,6 @@ final Map  <String, WidgetBuilder> routes = {
   ForgetPasswordScreen.routeName:((context) => ForgetPasswordScreen()),
   CreateNewPasswordScreen.routeName:((context) => CreateNewPasswordScreen()),
   CompleteProfileScreen.routeName:((context) => CompleteProfileScreen(firstSignUpScreenData: {},)),
-
+  WebPageScreen.routeName:((context) => WebPageScreen()),
+  QuestionScreen.routeName:((context) => QuestionScreen()),
 };
