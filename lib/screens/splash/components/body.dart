@@ -1,24 +1,31 @@
-import 'dart:math';
-
+//import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:graduation/components/splash_page.dart';
 import 'package:graduation/constants.dart';
-
+import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/splash/splash_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../../../size_config.dart';
-class Body extends StatelessWidget {
-  const Body({Key? key, required this.CurrentScreen, required this.NumOfScreen}) : super(key: key);
 
-  final int NumOfScreen;
-  final int CurrentScreen;
+
+
+class Body extends StatelessWidget {
+   Body({Key? key, required bool ShowHome,}) : super(key: key);
+
+   final controller = PageController();
 
   @override
 
+  void dispose(){
+    controller.dispose();
+    //super.dispose();
+  }
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
+        controller: controller,
         children: [
-
           Container(
             decoration: BoxDecoration (
                 image: DecorationImage(
@@ -26,39 +33,44 @@ class Body extends StatelessWidget {
             ),
             child: Column(
               children: [
-              //Padding(padding: EdgeInsets.only(left: 50, top: 500)) ,
                 SizedBox(height: SizeConfig.screenHeight*0.6),
               Text("Our future to choose", style: TextStyle(color: Colors.white, fontSize: 32, fontFamily: "Poppins",fontWeight: FontWeight.w600 ),textAlign: TextAlign.center,),
-                SizedBox(height: SizeConfig.screenHeight*0.005),
+                SizedBox(height: SizeConfig.screenHeight*0.004),
                 Text("Respond with positive, \npractical actions",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20, fontFamily:"Poppins",fontWeight: FontWeight.w300 ),),
+
                 SizedBox(height: SizeConfig.screenHeight*0.04),
-
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for(int i=0 ; i<NumOfScreen ; i++)
-                      createProgressDots((i == CurrentScreen)?true:false)
-
-                  ],
+                Center(
+                  child: SmoothPageIndicator(
+                    controller: controller,
+                    count: 3,
+                    effect: WormEffect(
+                      spacing: 20,
+                      dotColor: Colors.white,
+                      activeDotColor: LightModeMainColor,
+                      dotHeight: 14,
+                      dotWidth: 14,
+                    ),
+                    onDotClicked: (index) => controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeIn),
+                  ),
                 ),
+                SizedBox(height: SizeConfig.screenHeight*0.123),
 
-
-                SizedBox(height: SizeConfig.screenHeight*0.116),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ElevatedButton(onPressed: (){}, child: Text("Next  ➞",style: TextStyle(fontSize: 23),),
+                    ElevatedButton(onPressed: () => controller.jumpToPage(1), child: Text("Next  ➞",style: TextStyle(fontSize: 23),),
                       style:ElevatedButton.styleFrom(
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15))),
-                      padding: EdgeInsets.symmetric(vertical: 22,horizontal: 27),
+                      padding: EdgeInsets.symmetric(vertical: 20,horizontal: 23),
                       primary: Colors.white,
                       backgroundColor: LightModeMainColor,
                     ),)
                   ],
                 )
     ],),
+
           ),
+
 
 
 
@@ -69,37 +81,41 @@ class Body extends StatelessWidget {
             ),
             child: Column(
               children: [
-                //Padding(padding: EdgeInsets.only(left: 50, top: 500)) ,
                 SizedBox(height: SizeConfig.screenHeight*0.6),
                 Text("Shift the culture", style: TextStyle(color: Colors.white, fontSize: 32, fontFamily: "Poppins",fontWeight: FontWeight.w600 ),textAlign: TextAlign.center,),
-                SizedBox(height: SizeConfig.screenHeight*0.005),
-                Text("Advocate for change by discovering satisfying ways to live",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 20, fontFamily:"Poppins",fontWeight: FontWeight.w300 ),),
+                SizedBox(height: SizeConfig.screenHeight*0.004),
+                Text("Advocate for change by discovering satisfying ways to live",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 19, fontFamily:"Poppins",fontWeight: FontWeight.w300 ),),
+
                 SizedBox(height: SizeConfig.screenHeight*0.04),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for(int i=0 ; i<NumOfScreen ; i++)
-                      createProgressDots((i == CurrentScreen)?true:false)
-
-                  ],
+                Center(
+                  child: SmoothPageIndicator(
+                    controller:controller ,
+                    count: 3,
+                    effect: WormEffect(
+                      spacing: 20,
+                      dotColor: Colors.white,
+                      activeDotColor: LightModeMainColor,
+                      dotHeight: 14,
+                      dotWidth: 14,
+                    ),
+                    onDotClicked: (index) => controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeIn),
+                  ),
                 ),
 
+                SizedBox(height: SizeConfig.screenHeight*0.128),
 
-                SizedBox(height: SizeConfig.screenHeight*0.116),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ElevatedButton(onPressed: (){}, child: Text("Next  ➞",style: TextStyle(fontSize: 23),),
+                    ElevatedButton(onPressed: ()=> controller.jumpToPage(2), child: Text("Next  ➞",style: TextStyle(fontSize: 23),),
                       style:ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15))),
-                        padding: EdgeInsets.symmetric(vertical: 22,horizontal: 27),
+                        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 23),
                         primary: Colors.white,
                         backgroundColor: LightModeMainColor,
                       ),)
                   ],
                 ),
-
               ],),
           ),
 
@@ -113,31 +129,39 @@ class Body extends StatelessWidget {
             ),
             child:Column(
               children: [
-                //Padding(padding: EdgeInsets.only(left: 50, top: 500)) ,
                 SizedBox(height: SizeConfig.screenHeight*0.6),
                 Text("Restore a healthy Earth", style: TextStyle(color: Colors.white, fontSize: 30, fontFamily: "Poppins",fontWeight: FontWeight.w600 ),textAlign: TextAlign.center,),
-                SizedBox(height: SizeConfig.screenHeight*0.005),
+                SizedBox(height: SizeConfig.screenHeight*0.004),
                 Text("Join a global community\ncaring for our shared planet",textAlign: TextAlign.center,style: TextStyle(color: Colors.white, fontSize: 19, fontFamily:"Poppins",fontWeight: FontWeight.w300 ),),
+
                 SizedBox(height: SizeConfig.screenHeight*0.04),
-
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    for(int i=0 ; i<NumOfScreen ; i++)
-                      createProgressDots((i == CurrentScreen)?true:false)
-
-                  ],
+                Center(
+                  child: SmoothPageIndicator(
+                    controller:controller ,
+                    count: 3,
+                    effect: WormEffect(
+                      spacing: 20,
+                      dotColor: Colors.white,
+                      activeDotColor: LightModeMainColor,
+                      dotHeight: 14,
+                      dotWidth: 14,
+                    ),
+                    onDotClicked: (index) => controller.animateToPage(index, duration: const Duration(milliseconds: 500), curve: Curves.easeIn),
+                  ),
                 ),
 
+                SizedBox(height: SizeConfig.screenHeight*0.131),
 
-                SizedBox(height: SizeConfig.screenHeight*0.116),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    ElevatedButton(onPressed: (){}, child: Text("Next  ➞",style: TextStyle(fontSize: 23),),
+                    ElevatedButton(onPressed: () async {
+                      final prefs = await SharedPreferences.getInstance();//عشان يسيف الهوم وميفتحش السبلاش كل مره *مش شغاله*
+                      prefs.setBool("ShowHome", true);},
+                      child: Text("Next  ➞",style: TextStyle(fontSize: 23),),
                       style:ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(topLeft: Radius.circular(15))),
-                        padding: EdgeInsets.symmetric(vertical: 25,horizontal: 27),
+                        padding: EdgeInsets.symmetric(vertical: 20,horizontal: 23),
                         primary: Colors.white,
                         backgroundColor: LightModeMainColor,
                       ),)
@@ -145,20 +169,6 @@ class Body extends StatelessWidget {
                 )
               ],),
           ),
-
-
         ],),
     );
   }}
-Widget createProgressDots(bool isActiveScreen){
-  return Container(
-    margin: EdgeInsets.symmetric(horizontal: 8),
-    height: isActiveScreen? 15: 12,
-    width: isActiveScreen? 15: 12,
-    decoration: BoxDecoration(
-      color: isActiveScreen? LightModeMainColor:  Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(12)),
-    ),
-  );
-
-}
