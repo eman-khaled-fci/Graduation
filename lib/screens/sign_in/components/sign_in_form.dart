@@ -4,13 +4,13 @@ import 'package:graduation/components/custom_suffix_icon.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/models/login_request_model.dart';
-import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/models/login_with_remember_request_model.dart';
+import 'package:graduation/models/remember_me_request_model.dart';
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-
-import '../../forget_password/forget_password_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({Key? key}) : super(key: key);
@@ -29,10 +29,10 @@ class _SignInFormState extends State<SignInForm> {
   bool _flag1 = false;
   bool _flag2 = false;
   var _isObscured;
+  //SharedPreferences? prefs;
 
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  TextEditingController rememberMeController = TextEditingController();
 
 
   @override
@@ -96,8 +96,9 @@ class _SignInFormState extends State<SignInForm> {
             ],
           ),
           SizedBox(height: SizeConfig.screenHeight*0.04),
-          DefaultButton(text: "Log in",press:isOk()? () {
-            //Navigator.pushNamed(context, HomeScreen.routeName);
+          DefaultButton(text: "Log in",press:isOk()? () async {
+            SharedPreferences prefs = await SharedPreferences.getInstance();
+            //Navigator.pushNamed(context, ForgetPasswordScreen.routeName);
 
             // mahmoud.yasser.fci3@gmail.com
             // 123456789
@@ -105,37 +106,73 @@ class _SignInFormState extends State<SignInForm> {
             // print("password : "+ passwordController.text);
 
 
-             // LoginRequestModel model = LoginRequestModel(
-             //     email:emailController.text,
-             //     password:passwordController.text,
-             //     rememberMe: rememberMeController.text,
-             // );
-             // APIService.login(model).then((response) =>{
-             //   if(response){
-             //     print("succeed "),
-             //     Navigator.pushNamed(context, SignUpScreen.routeName)
-             //   }
-             //   else{
-             //     print("fail")
-             //
-             // }
-             // });
 
-            // RememberMeRequestModel model = RememberMeRequestModel(
-            //
-            //   rememberToken: "364f7d40b7d71cd514d6695192228fe8e607ae9572689993110b63d7aa7edb37",
-            // );
-            // APIService.remember_me(model).then((response) =>{
-            //   if(response.status == "Valid"){
-            //     print("success"),
-            //     print(response.status),
-            //     Navigator.pushNamed(context, SignUpScreen.routeName)
-            //   }
-            //   else{
-            //     print("fail"),
-            //     print(response.status),
-            //   }
-            // });
+        if(value == true ){
+          LoginWithRememberMeRequestModel model = LoginWithRememberMeRequestModel(
+              email:emailController.text,
+              password:passwordController.text,
+              rememberMe:"True"
+          );
+          APIService.loginWithRememberMe(model).then((response)  =>{
+            if(response.rememberToken!=null){
+
+
+            prefs?.setString('rememberToken', response.rememberToken!),
+              print("rememberToken "+   prefs!.getString('rememberToken')!),
+
+
+
+
+
+
+
+
+    //  Navigator.pushNamed(context, SignUpScreen.routeName)
+
+            }
+            else{
+              print("login with remember me failed")
+            }
+          });
+
+
+          //
+          // RememberMeRequestModel model2 = RememberMeRequestModel(
+          //
+          // rememberToken: prefs?.getString('rememberToken')!,
+          //
+          //
+          // );
+          // APIService.rememberMe(model2).then((response)  =>
+          //       {
+          //         if(response.status == "Valid"){
+          //           print(response.status)
+          //         }
+          //         else
+          //           {
+          //             print("remember token not valid")
+          //           }
+          //       });
+
+    }
+        else{
+          LoginRequestModel model = LoginRequestModel(
+               email:emailController.text,
+               password:passwordController.text
+           );
+           APIService.login(model).then((response) =>{
+             if(response){
+               print("succeed "),
+               Navigator.pushNamed(context, SignUpScreen.routeName)
+             }
+             else{
+               print("fail")
+           }
+           });
+        }
+
+
+
 
 
 

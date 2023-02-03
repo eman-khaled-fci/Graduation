@@ -1,12 +1,19 @@
 import 'dart:convert';
 
+import 'package:webview_flutter/webview_flutter.dart';
+
 import 'package:graduation/constants.dart';
 import 'package:graduation/models/forget_password_request_model.dart';
 import 'package:graduation/models/forget_password_response_model.dart';
+import 'package:graduation/models/google_login_response.dart';
 import 'package:graduation/models/login_request_model.dart';
 import 'package:graduation/models/login_response_model.dart';
+import 'package:graduation/models/login_with_remember_request_model.dart';
+import 'package:graduation/models/login_with_remember_response.dart';
 import 'package:graduation/models/register_request_model.dart';
 import 'package:graduation/models/register_response_model.dart';
+import 'package:graduation/models/remember_me_request_model.dart';
+import 'package:graduation/models/remember_me_response_model.dart';
 import 'package:graduation/models/reset_password_request_model.dart';
 import 'package:graduation/models/reset_password_response_model.dart';
 
@@ -57,6 +64,69 @@ class APIService {
 
 return registerResponseModel(response.body);
   }
+
+
+
+  static Future<GoogleLoginResponse> googleLogin() async {
+    Map<String, String> requestHeaders = {
+      'Content-Type' : 'application/json',
+
+    } ;
+
+    var url = Uri.http(urlForGoogleLogin,googleLoginEndpoint);
+    var response = await client.get
+      (     url,
+     // headers: requestHeaders,
+      //body: jsonEncode(model.toJson()),
+
+    );
+    print("response body "+response.body);
+    return googleResponseModel(response.body);
+  }
+
+
+
+
+  static Future<LoginWithRememberMeResponseModel> loginWithRememberMe(LoginWithRememberMeRequestModel model) async {
+    Map<String, String> requestHeaders = {
+      'Content-Type' : 'application/json',
+
+    } ;
+
+    var url = Uri.http(baseUrl,loginEndpoint);
+    var response = await client.post
+      (     url,
+      headers: requestHeaders,
+      body: jsonEncode(model.toJson()),
+
+    );
+
+    return loginWithRememberMeResponseModel(response.body);
+  }
+
+
+  static Future<RememberMeResponseModel> rememberMe(RememberMeRequestModel model) async {
+    Map<String, String> requestHeaders = {
+      'Content-Type' : 'application/json',
+    } ;
+
+    var url = Uri.http(baseUrl,rememberMeEndpoint);
+    var response = await client.post
+      (
+      url,
+      headers: requestHeaders,
+      body: jsonEncode(model.toJson()),
+    );
+
+    return rememberMeResponseModel(response.body);
+  }
+
+
+
+
+
+
+
 
   static Future<ForgetPasswordResponseModel> forgetPassword(ForgetPasswordRequestModel model) async {
     Map<String, String> requestHeaders = {
