@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
         theme: theme(),
-        initialRoute: CompleteProfileScreen.routeName,
+        initialRoute: QuestionScreen.routeName,
         routes: routes,
 
 
