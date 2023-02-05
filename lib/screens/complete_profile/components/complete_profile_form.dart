@@ -92,28 +92,28 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                       alignment: Alignment.topLeft,
                       child:Transform.scale(
                         scale: 1.5,
-                        child: RadioListTile(
-                            activeColor: LightModeMainColor,
-                            value: "Male",
-                            groupValue: gender,
-                            onChanged:(value){
-                              setState(() {
-                                gender = value.toString();
-                              });
-                            }
-                        ),
-
-                        // child: Checkbox(
-                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        //   value: value1,
-                        //   autofocus: true,
-                        //   activeColor: LightModeMainColor,
-                        //   onChanged: (bool? value){
-                        //     setState(() {
-                        //       this.value1 = value! ;
-                        //     });
-                        //   },
+                        // child: RadioListTile(
+                        //     activeColor: LightModeMainColor,
+                        //     value: "Male",
+                        //     groupValue: gender,
+                        //     onChanged:(value){
+                        //       setState(() {
+                        //         gender = value.toString();
+                        //       });
+                        //     }
                         // ),
+
+                        child: Checkbox(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          value: value1,
+                          autofocus: true,
+                          activeColor: LightModeMainColor,
+                          onChanged: (bool? value){
+                            setState(() {
+                              this.value1 = value! ;
+                            });
+                          },
+                        ),
 
 
 
@@ -159,17 +159,17 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                       child:Transform.scale(
                           scale: 1.5,
 
-                          child: RadioListTile(
-                              activeColor: LightModeMainColor,
-                              contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
-                              value: "Female",
-                              groupValue: gender,
-                              onChanged:(value){
-                                setState(() {
-                                  gender = value.toString();
-                                });
-                              }
-                          )
+                          // child: RadioListTile(
+                          //     activeColor: LightModeMainColor,
+                          //     contentPadding: EdgeInsets.fromLTRB(20, 0, 0, 0),
+                          //     value: "Female",
+                          //     groupValue: gender,
+                          //     onChanged:(value){
+                          //       setState(() {
+                          //         gender = value.toString();
+                          //       });
+                          //     }
+                          // )
 
                         // child: CheckboxListTile(
                         //   activeColor: LightModeMainColor,
@@ -184,19 +184,19 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                         //   },
                         //
                         // ),
-                        // child: Checkbox(
-                        //   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-                        //   value: value2,
-                        //   onChanged:(bool? value){
-                        //     setState(() {
-                        //       this.value2 = value! ;
-                        //     });
-                        //   },
-                        //   activeColor: LightModeMainColor,
-                        //   checkColor: Colors.white,
-                        //   autofocus: true,
-                        //
-                        // ),
+                        child: Checkbox(
+                          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+                          value: value2,
+                          onChanged:(bool? value){
+                            setState(() {
+                              this.value2 = value! ;
+                            });
+                          },
+                          activeColor: LightModeMainColor,
+                          checkColor: Colors.white,
+                          autofocus: true,
+
+                        ),
 
 
 
