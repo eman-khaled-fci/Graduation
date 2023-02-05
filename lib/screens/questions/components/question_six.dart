@@ -1,33 +1,32 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/components/question_page_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/screens/questions/question_screen.dart';
 import 'package:graduation/size_config.dart';
-
-
-
-class Body extends StatefulWidget {
-  const Body({Key? key}) : super(key: key);
+class QuestionSix extends StatefulWidget {
+  static String routeName= "/questions";
+  const QuestionSix({Key? key}) : super(key: key);
 
   @override
-  State<Body> createState() => _BodyState();
+  State<QuestionSix> createState() => _QuestionSixState();
 }
-class _BodyState extends State<Body> {
-  //من اول هنااااا
+
+class _QuestionSixState extends State<QuestionSix> {
   String answer = "";
+  Color currentColor = question_color;
   bool isTouching1 = false;
   bool isTouching2 = false;
   bool isTouching3 = false;
   bool isTouching4 = false;
   handleTouch(
-    bool confirmTouch1,
-    bool confirmTouch2,
-  ) {
+      bool confirmTouch1,
+      bool confirmTouch2,
+      ) {
     setState(() {
       isTouching1 = confirmTouch1;
       isTouching1 = confirmTouch2;
     });
   }
-//لحد هناااااااااااا
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -52,12 +51,12 @@ class _BodyState extends State<Body> {
                                 SizedBox(
                                   width: 1,
                                   child: Text(
-                                    "Food", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    "waste", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                     maxLines: 15,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         fontSize:
-                                            getProportionateScreenWidth(23),
+                                        getProportionateScreenWidth(23),
                                         fontFamily: "Poppins3",
                                         color: Colors.white,
                                         fontWeight: FontWeight.w600,
@@ -68,10 +67,10 @@ class _BodyState extends State<Body> {
                                 Column(
                                   children: [
                                     Text(
-                                      "Q 1", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      "Q 6", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       style: TextStyle(
                                           fontSize:
-                                              getProportionateScreenWidth(24),
+                                          getProportionateScreenWidth(24),
                                           fontFamily: "Poppins",
                                           color: Colors.white,
                                           fontWeight: FontWeight.w800),
@@ -80,7 +79,7 @@ class _BodyState extends State<Body> {
                                       "of 9",
                                       style: TextStyle(
                                           fontSize:
-                                              getProportionateScreenWidth(14),
+                                          getProportionateScreenWidth(14),
                                           fontFamily: "Poppins3",
                                           color: Colors.white,
                                           fontWeight: FontWeight.w300),
@@ -97,9 +96,9 @@ class _BodyState extends State<Body> {
                         ],
                       ),
                       decoration: BoxDecoration(
-                          color: Q1_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                          color: Q6_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                           borderRadius: BorderRadius.only(
-                              // topLeft: Radius.circular(10),
+                            // topLeft: Radius.circular(10),
                               bottomRight: Radius.circular(40))),
                     ),
                   ),
@@ -124,7 +123,7 @@ class _BodyState extends State<Body> {
                                     bottomRight: Radius.circular(20)),
                                 image: DecorationImage(
                                     image:
-                                        AssetImage("assets/images/q1_img.jpg"),//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    AssetImage("assets/images/q6_img.jpg"),//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                     fit: BoxFit.cover),
                               ),
                             ),
@@ -135,7 +134,7 @@ class _BodyState extends State<Body> {
                           Padding(
                             padding: const EdgeInsets.all(12.0),
                             child: Text(
-                                "How would you best describe your meals in the university?",//hereeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                "How many packages do you throw away per week?",//hereeeeeeeeeeeeeeeeeeeeeeeeeeee
                                 style: questionsStyle),
                           ),
                           Listener(
@@ -154,19 +153,24 @@ class _BodyState extends State<Body> {
                                   left: 12, right: 12, top: 7, bottom: 7),
                               decoration: BoxDecoration(
                                   border:
-                                      Border.all(color: borderColor, width: 2),
+                                  Border.all(color: borderColor, width: 2),
                                   // color: Q1_mainColor,
                                   color: isTouching1 == true
-                                      ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      ? Q6_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       : Colors.white,
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(10),
                                       bottomRight: Radius.circular(20))),
                               child: RadioListTile(
-                                  activeColor: LightModeMainColor,
-                                  title: Text("Meat in every meal", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                      style: answersStyle),
-                                  value: "Meat in every meal", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                  activeColor: Colors.white,
+                                  title: Text("1 – 5 packages", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      style: TextStyle(
+                                          fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
+                                          fontFamily: "Poppins",
+                                          color: isTouching1 == true //hereeeeeee
+                                        ? Colors.white
+                                        :currentColor,)),
+                                  value: "1 – 5 packages", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                   groupValue: answer,
                                   onChanged: (value) {
                                     setState(() {
@@ -190,20 +194,25 @@ class _BodyState extends State<Body> {
                                   left: 12, right: 12, top: 7, bottom: 7),
                               decoration: BoxDecoration(
                                   color: isTouching2 == true
-                                      ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      ? Q6_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       : Colors.white,
                                   border:
-                                      Border.all(color: borderColor, width: 2),
+                                  Border.all(color: borderColor, width: 2),
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(10),
                                       bottomRight: Radius.circular(20))),
                               child: RadioListTile(
-                                  activeColor: LightModeMainColor,
+                                  activeColor: Colors.white,
                                   title: Text(
-                                    "Meat in some meals",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                    style: answersStyle,
+                                    "10 – 25 packages",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    style: TextStyle(
+                                      fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
+                                      fontFamily: "Poppins",
+                                      color: isTouching2 == true //hereeeeeee
+                                          ? Colors.white
+                                          :currentColor,),
                                   ),
-                                  value: "Meat in some meals",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                  value: "10 – 25 packages",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                   groupValue: answer,
                                   onChanged: (value) {
                                     setState(() {
@@ -227,20 +236,25 @@ class _BodyState extends State<Body> {
                                   left: 12, right: 12, top: 7, bottom: 7),
                               decoration: BoxDecoration(
                                   color: isTouching3 == true
-                                      ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      ? Q6_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       : Colors.white,
                                   border:
-                                      Border.all(color: borderColor, width: 2),
+                                  Border.all(color: borderColor, width: 2),
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(10),
                                       bottomRight: Radius.circular(20))),
                               child: RadioListTile(
                                   title: Text(
-                                    "Meat very rarely",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                    style: answersStyle,
+                                    "More than 25 packages",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    style: TextStyle(
+                                      fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
+                                      fontFamily: "Poppins",
+                                      color: isTouching3 == true //hereeeeeee
+                                          ? Colors.white
+                                          :currentColor,),
                                   ),
-                                  activeColor: LightModeMainColor,
-                                  value: "Meat very rarely",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                  activeColor: Colors.white,
+                                  value: "More than 25 packages",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                   groupValue: answer,
                                   onChanged: (value) {
                                     setState(() {
@@ -261,20 +275,25 @@ class _BodyState extends State<Body> {
                                   left: 12, right: 12, top: 7, bottom: 7),
                               decoration: BoxDecoration(
                                   color: isTouching4 == true
-                                      ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      ? Q6_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       : Colors.white,
                                   border:
-                                      Border.all(color: borderColor, width: 2),
+                                  Border.all(color: borderColor, width: 2),
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(10),
                                       bottomRight: Radius.circular(20))),
                               child: RadioListTile(
                                   title: Text(
-                                    "Vegetarian", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                    style: answersStyle,
+                                    "I don’t waste packages", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    style: TextStyle(
+                                      fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
+                                      fontFamily: "Poppins",
+                                      color: isTouching4 == true //hereeeeeee
+                                          ? Colors.white
+                                          :currentColor,),
                                   ),
-                                  activeColor: LightModeMainColor,
-                                  value: "Vegetarian", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                  activeColor: Colors.white,
+                                  value: "I don’t waste packages", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                   groupValue: answer,
                                   onChanged: (value) {
                                     setState(() {
@@ -299,44 +318,45 @@ class _BodyState extends State<Body> {
           Expanded(
               flex: 1,
               child: Container(
-                  //  color: Colors.lightBlue,
+                //  color: Colors.lightBlue,
                   child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  ElevatedButton(
-                      onPressed: () => () {},
-                      child: Text(
-                        "Prev",
-                        style: TextStyle(fontSize: 23, color: Q1_mainColor), //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                                topRight: Radius.circular(20))),
-                        padding:
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () => () {},
+                          child: Text(
+                            "Prev",
+                            style: TextStyle(fontSize: 23, color: Q6_mainColor), //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topRight: Radius.circular(20))),
+                            padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 44),
-                        primary: Colors.white,
-                        backgroundColor: prevButtonColor,
-                      )),
-                  ElevatedButton(
-                      onPressed: () => () {},
-                      child: Text(
-                        "Next",
-                        style: TextStyle(fontSize: 23, color: Colors.white),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(20))),
-                        padding:
+                            primary: Colors.white,
+                            backgroundColor: prevButtonColor,
+                          )),
+                      ElevatedButton(
+                          onPressed: () => () {Navigator.pushNamed(context, QuestionScreen.routeName);},
+                          child: Text(
+                            "Next",
+                            style: TextStyle(fontSize: 23, color: Colors.white),
+                          ),
+                          style: ElevatedButton.styleFrom(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.only(
+                                    topLeft: Radius.circular(20))),
+                            padding:
                             EdgeInsets.symmetric(vertical: 20, horizontal: 44),
-                        primary: Colors.white,
-                        backgroundColor: Q1_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                      )),
-                ],
-              )))
+                            primary: Colors.white,
+                            backgroundColor: Q6_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                          )),
+                    ],
+                  )))
         ],
       ),
     );
   }
 }
+

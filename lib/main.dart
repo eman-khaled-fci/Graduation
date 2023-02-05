@@ -8,6 +8,7 @@ import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
 import 'package:graduation/screens/otp/otp_screen.dart';
 import 'package:graduation/screens/questions/question_screen.dart';
+import 'package:graduation/screens/result_page/result_screen.dart';
 import 'package:graduation/screens/sign_in/sign_in_screen.dart';
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/screens/web_page/web_page_screen.dart';
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
         theme: theme(),
-        initialRoute: CompleteProfileScreen.routeName,
+        initialRoute: ResultScreen.routeName,
         routes: routes,
 
 
