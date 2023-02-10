@@ -61,6 +61,9 @@ class Body extends StatelessWidget {
                   press: () {
                     Navigator.pushNamed(context, SignUpScreen.routeName);
 
+
+
+
                     // LoginRequestModel model = LoginRequestModel(
                     //     email:"Mayada.Mayada.fci3@gmail.com",
                     //     password:"123456789123"

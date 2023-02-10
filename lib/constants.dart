@@ -3,9 +3,9 @@ import 'package:graduation/size_config.dart';
 
 // Api url & end points
 
-const String baseUrl = '192.168.1.7:5000';
+const String baseUrl = '192.168.1.5:5000';
 const String urlForGoogleLogin = '10.0.2.2:5000';
-
+const String carbonCalcEndPoint = '/calc';
 const String registerEndpoint = '/register';
 const String loginEndpoint = '/login';
 const String getAllUsersEndpoint = '/all_user';
@@ -18,6 +18,8 @@ const String forgetPasswordEndpoint = '/forgetPassword';
 const String verifyOTPEndpoint = '/verify';
 const String resetPasswordEndpoint = '/resetPassword';
 const String rememberMeEndpoint = '/remember_me';
+const String carbonAdviceEndpoint = '/carbAdv';
+
 
 // questions pages colores
 

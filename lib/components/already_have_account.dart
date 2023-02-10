@@ -20,24 +20,24 @@ class AlreadyHaveAccount extends StatelessWidget {
         Text("Already have an account ? ", style: LightModeSmallTextStyle),
         GestureDetector(
             onTap: () async {
-              SharedPreferences prefs = await SharedPreferences.getInstance();
-              print("rememberToken" + prefs!.getString('rememberToken')!);
-              RememberMeRequestModel model2 = RememberMeRequestModel(
-                rememberToken: prefs?.getString('rememberToken')!,
-              );
-              APIService.rememberMe(model2).then((response) async => {
-                    if (response.status == "Valid")
-                      {
-                        print(response.status),
-                        Navigator.pushNamed(context, OtpScreen.routeName)
-                      }
-                    else
-                      {
-                        print("remember token not valid"),
-                        Navigator.pushNamed(context, SignInScreen.routeName)
-                      }
-                  });
-
+              // SharedPreferences prefs = await SharedPreferences.getInstance();
+              // print("rememberToken" + prefs!.getString('rememberToken')!);
+              // RememberMeRequestModel model2 = RememberMeRequestModel(
+              //   rememberToken: prefs?.getString('rememberToken')!,
+              // );
+              // APIService.rememberMe(model2).then((response) async => {
+              //       if (response.status == "Valid")
+              //         {
+              //           print(response.status),
+              //           Navigator.pushNamed(context, OtpScreen.routeName)
+              //         }
+              //       else
+              //         {
+              //           print("remember token not valid"),
+              //           Navigator.pushNamed(context, SignInScreen.routeName)
+              //         }
+              //     });
+              Navigator.pushNamed(context, SignInScreen.routeName);
               //  Navigator.pushNamed(context, SignInScreen.routeName);
             },
             child: Text(

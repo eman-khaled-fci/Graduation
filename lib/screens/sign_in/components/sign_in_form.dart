@@ -6,6 +6,8 @@ import 'package:graduation/constants.dart';
 import 'package:graduation/models/login_request_model.dart';
 import 'package:graduation/models/login_with_remember_request_model.dart';
 import 'package:graduation/models/remember_me_request_model.dart';
+import 'package:graduation/screens/questions/components/question_one.dart';
+
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
@@ -161,12 +163,13 @@ class _SignInFormState extends State<SignInForm> {
                password:passwordController.text
            );
            APIService.login(model).then((response) =>{
-             if(response){
-               print("succeed "),
-               Navigator.pushNamed(context, SignUpScreen.routeName)
+             if(response.token != null){
+               print("login succeed "),
+               print("login token         "+response.token!),
+               Navigator.pushNamed(context, QuestionOne.routeName)
              }
              else{
-               print("fail")
+               print("login failed")
            }
            });
         }

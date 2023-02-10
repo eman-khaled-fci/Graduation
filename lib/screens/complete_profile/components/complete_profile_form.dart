@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/models/register_request_model.dart';
 import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/intro_questions/intro_questions.dart';
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/services/api_service.dart';
 import 'package:graduation/size_config.dart';
@@ -230,8 +231,8 @@ class _CompleteProfileFormState extends State<CompleteProfileForm> {
                   APIService.register(model).then((response) => {
                         if (response.token != null)
                           {
-                            print("succeed "),
-                            Navigator.pushNamed(context, HomeScreen.routeName)
+                            print("succeed "+response.message!+"   "+response.token!),
+                            Navigator.pushNamed(context, IntroScreen.routeName)
                           }
                         else
                           {print("fail")}

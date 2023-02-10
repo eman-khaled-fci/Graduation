@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/components/default_button.dart';
 import 'package:graduation/constants.dart';
+import 'package:graduation/screens/questions/components/question_one.dart';
 import 'package:graduation/size_config.dart';
 
 class Body extends StatelessWidget {
@@ -58,7 +59,15 @@ class Body extends StatelessWidget {
                   ),
                   SizedBox(height: SizeConfig.screenHeight * 0.04),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => QuestionOne()
+                          ));
+
+
+                    },
                     child: Text(
                       "Calculate Your Footprint",
                       style: TextStyle(fontSize: 20),

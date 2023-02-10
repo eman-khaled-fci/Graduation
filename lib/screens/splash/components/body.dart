@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/screens/home/home_screen.dart';
+import 'package:graduation/screens/intro_questions/intro_questions.dart';
 import 'package:graduation/screens/splash/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -214,7 +215,16 @@ class Body extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => HomeScreen()
+                            ));
+
+
+                      },
                       //async {
                       //   final prefs = await SharedPreferences.getInstance();//عشان يسيف الهوم وميفتحش السبلاش كل مره *مش شغاله*
                       //   prefs.setBool("ShowHome", true);},

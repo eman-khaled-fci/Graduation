@@ -1,34 +1,74 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/components/question_page_button.dart';
 import 'package:graduation/constants.dart';
-import 'package:graduation/screens/questions/components/question_eight.dart';
-import 'package:graduation/screens/questions/components/question_nine.dart';
+import 'package:graduation/screens/questions/components/question_two.dart';
 import 'package:graduation/size_config.dart';
-class QuestionSeven extends StatefulWidget {
-  static String routeName = "/QuestionSeven";
-  final Map<dynamic,dynamic> answersData ;
-   QuestionSeven(this.answersData) ;
+import 'package:shared_preferences/shared_preferences.dart';
+
+
+class QuestionOne extends StatefulWidget {
+  static String routeName = "/QuestionOne";
+  const QuestionOne({Key? key}) : super(key: key);
 
   @override
-  State<QuestionSeven> createState() => _QuestionSevenState();
+  State<QuestionOne> createState() => _QuestionOneState();
 }
+class _QuestionOneState extends State<QuestionOne> {
+  //List<dynamic> selectedList = [];
+   Map<dynamic,dynamic> answersData = {};
+  //من اول هنااااا
 
-class _QuestionSevenState extends State<QuestionSeven> {
   String answer = "";
-  Color currentColor = question_color;
   bool isTouching1 = false;
   bool isTouching2 = false;
   bool isTouching3 = false;
   bool isTouching4 = false;
   handleTouch(
-      bool confirmTouch1,
-      bool confirmTouch2,
-      ) {
+    bool confirmTouch1,
+    bool confirmTouch2,
+  ) {
     setState(() {
       isTouching1 = confirmTouch1;
       isTouching1 = confirmTouch2;
     });
+
   }
+//لحد هناااااااااااا
+
+
+//     String savedValue = "";
+//     checkSavedValue() async {
+//     SharedPreferences prefs = await SharedPreferences.getInstance();
+//     print("prefs.getString('foodType')!    "+prefs.getString('foodType')!);
+//     if(prefs.getString('foodType')!=null){
+//       savedValue = prefs.getString('foodType')!;
+//     }else{
+//       savedValue = "";
+//     }
+//
+//   }
+
+
+//final String savedValue = test() as String ;
+  @override
+
+  initState()  {
+    // checkSavedValue();
+    // if(savedValue!=""){
+    //   answer = savedValue;
+    //   //print("answer = "+ answer);
+    // }
+    // else{
+    //   answer = "";
+    //   print("printed answer empty");
+    // }
+    // print("initState Called");
+
+
+
+  }
+
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -55,12 +95,12 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                   SizedBox(
                                     width: 1,
                                     child: Text(
-                                      "Car", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      "Food", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       maxLines: 15,
                                       overflow: TextOverflow.ellipsis,
                                       style: TextStyle(
                                           fontSize:
-                                          getProportionateScreenWidth(23),
+                                              getProportionateScreenWidth(23),
                                           fontFamily: "Poppins3",
                                           color: Colors.white,
                                           fontWeight: FontWeight.w600,
@@ -71,10 +111,10 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                   Column(
                                     children: [
                                       Text(
-                                        "Q 7", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                        "Q 1", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                         style: TextStyle(
                                             fontSize:
-                                            getProportionateScreenWidth(24),
+                                                getProportionateScreenWidth(24),
                                             fontFamily: "Poppins",
                                             color: Colors.white,
                                             fontWeight: FontWeight.w800),
@@ -83,7 +123,7 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                         "of 9",
                                         style: TextStyle(
                                             fontSize:
-                                            getProportionateScreenWidth(14),
+                                                getProportionateScreenWidth(14),
                                             fontFamily: "Poppins3",
                                             color: Colors.white,
                                             fontWeight: FontWeight.w300),
@@ -100,9 +140,9 @@ class _QuestionSevenState extends State<QuestionSeven> {
                           ],
                         ),
                         decoration: BoxDecoration(
-                            color: Q7_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                            color: Q1_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                             borderRadius: BorderRadius.only(
-                              // topLeft: Radius.circular(10),
+                                // topLeft: Radius.circular(10),
                                 bottomRight: Radius.circular(40))),
                       ),
                     ),
@@ -127,7 +167,7 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                       bottomRight: Radius.circular(20)),
                                   image: DecorationImage(
                                       image:
-                                      AssetImage("assets/images/q7_img.jpg"),//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                          AssetImage("assets/images/q1_img.jpg"),//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                       fit: BoxFit.cover),
                                 ),
                               ),
@@ -138,7 +178,7 @@ class _QuestionSevenState extends State<QuestionSeven> {
                             Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Text(
-                                  "Do you use a car while moving around in the university?",//hereeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                  "How would you best describe your meals in the university?",//hereeeeeeeeeeeeeeeeeeeeeeeeeeee
                                   style: questionsStyle),
                             ),
                             Listener(
@@ -157,24 +197,19 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                     left: 12, right: 12, top: 7, bottom: 7),
                                 decoration: BoxDecoration(
                                     border:
-                                    Border.all(color: borderColor, width: 2),
+                                        Border.all(color: borderColor, width: 2),
                                     // color: Q1_mainColor,
                                     color: isTouching1 == true
-                                        ? Q7_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                        ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                         : Colors.white,
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         bottomRight: Radius.circular(20))),
                                 child: RadioListTile(
                                     activeColor: Colors.white,
-                                    title: Text("Yes", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                        style: TextStyle(
-                                          fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
-                                          fontFamily: "Poppins",
-                                          color: isTouching1 == true //hereeeeeee
-                                              ? Colors.white
-                                              :currentColor,)),
-                                    value: "Yes", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    title: Text("Meat in every meal", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                        style: answersStyle),
+                                    value: "Meat in every meal", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                     groupValue: answer,
                                     onChanged: (value) {
                                       setState(() {
@@ -198,25 +233,20 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                     left: 12, right: 12, top: 7, bottom: 7),
                                 decoration: BoxDecoration(
                                     color: isTouching2 == true
-                                        ? Q7_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                        ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                         : Colors.white,
                                     border:
-                                    Border.all(color: borderColor, width: 2),
+                                        Border.all(color: borderColor, width: 2),
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         bottomRight: Radius.circular(20))),
                                 child: RadioListTile(
                                     activeColor: Colors.white,
                                     title: Text(
-                                      "Bicycle",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                      style: TextStyle(
-                                        fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
-                                        fontFamily: "Poppins",
-                                        color: isTouching2 == true //hereeeeeee
-                                            ? Colors.white
-                                            :currentColor,),
+                                      "Meat in some meals",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      style: answersStyle,
                                     ),
-                                    value: "Bicycle",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    value: "Meat in some meals",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                     groupValue: answer,
                                     onChanged: (value) {
                                       setState(() {
@@ -240,25 +270,20 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                     left: 12, right: 12, top: 7, bottom: 7),
                                 decoration: BoxDecoration(
                                     color: isTouching3 == true
-                                        ? Q7_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                        ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                         : Colors.white,
                                     border:
-                                    Border.all(color: borderColor, width: 2),
+                                        Border.all(color: borderColor, width: 2),
                                     borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(10),
                                         bottomRight: Radius.circular(20))),
                                 child: RadioListTile(
                                     title: Text(
-                                      "No, I usually walk",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                                      style: TextStyle(
-                                        fontSize: getProportionateScreenWidth(16), //hereeeeeeeeeeeeee
-                                        fontFamily: "Poppins",
-                                        color: isTouching3 == true //hereeeeeee
-                                            ? Colors.white
-                                            :currentColor,),
+                                      "Meat very rarely",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      style: answersStyle,
                                     ),
                                     activeColor: Colors.white,
-                                    value: "No, I usually walk",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    value: "Meat very rarely",//hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
                                     groupValue: answer,
                                     onChanged: (value) {
                                       setState(() {
@@ -267,40 +292,44 @@ class _QuestionSevenState extends State<QuestionSeven> {
                                     }),
                               ),
                             ),
-                            // Listener(
-                            //   onPointerDown: (event) => setState(() {
-                            //     isTouching1 = false;
-                            //     isTouching2 = false;
-                            //     isTouching3 = false;
-                            //     isTouching4 = true;
-                            //   }),
-                            //   child: Container(
-                            //     margin: const EdgeInsets.only(
-                            //         left: 12, right: 12, top: 7, bottom: 7),
-                            //     decoration: BoxDecoration(
-                            //         color: isTouching4 == true
-                            //             ? Q7_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                            //             : Colors.white,
-                            //         border:
-                            //         Border.all(color: borderColor, width: 2),
-                            //         borderRadius: BorderRadius.only(
-                            //             topLeft: Radius.circular(10),
-                            //             bottomRight: Radius.circular(20))),
-                            //     // child: RadioListTile(
-                            //     //     title: Text(
-                            //     //       "Vegetarian", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                            //     //       style: answersStyle,
-                            //     //     ),
-                            //     //     activeColor: LightModeMainColor,
-                            //     //     value: "Vegetarian", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                            //     //     groupValue: answer,
-                            //     //     onChanged: (value) {
-                            //     //       setState(() {
-                            //     //         answer = value.toString();
-                            //     //       });
-                            //     //     }),
-                            //   ),
-                            // ),
+                            Listener(
+                              onPointerDown: (event) => setState(() {
+                                isTouching1 = false;
+                                isTouching2 = false;
+                                isTouching3 = false;
+                                isTouching4 = true;
+                              }),
+                              child: Container(
+                                margin: const EdgeInsets.only(
+                                    left: 12, right: 12, top: 7, bottom: 7),
+                                decoration: BoxDecoration(
+                                    color: isTouching4 == true
+                                        ? Q1_mainColor //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                        : Colors.white,
+                                    border:
+                                        Border.all(color: borderColor, width: 2),
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(10),
+                                        bottomRight: Radius.circular(20))),
+                                child: RadioListTile(
+                                    title: Text(
+                                      "Vegetarian", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                      style: answersStyle,
+                                    ),
+                                    activeColor: Colors.white,
+                                    value: "Vegetarian", //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                                    groupValue: answer,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        answer = value.toString();
+                                      });
+                                    }),
+                              ),
+                            ),
+
+
+
+
                             Expanded(
                                 flex: 1,
                                 child: SizedBox(
@@ -317,68 +346,81 @@ class _QuestionSevenState extends State<QuestionSeven> {
             Expanded(
                 flex: 1,
                 child: Container(
-                  //  color: Colors.lightBlue,
+                    //  color: Colors.lightBlue,
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        ElevatedButton(
-                            onPressed: (){
-                              Navigator.pop(context);
-                            },
-                            child: Text(
-                              "Prev",
-                              style: TextStyle(fontSize: 23, color: Q7_mainColor), //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      topRight: Radius.circular(20))),
-                              padding:
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    ElevatedButton(
+                        onPressed: () => () {},
+                        child: Text(
+                          "Prev",
+                          style: TextStyle(fontSize: 23, color: Q1_mainColor), //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topRight: Radius.circular(20))),
+                          padding:
                               EdgeInsets.symmetric(vertical: 20, horizontal: 44),
-                              primary: Colors.white,
-                              backgroundColor: prevButtonColor,
-                            )),
-                        ElevatedButton(
-                            onPressed: (){
+                          primary: Colors.white,
+                          backgroundColor: prevButtonColor,
+                        )),
+                    ElevatedButton(
+                        onPressed: ()
+                        async {
+                          // SharedPreferences prefs = await SharedPreferences.getInstance();
+                          // prefs.setString('foodType', answer);
+                         // questionsAnswersData["test data"]="test test";
+                         //
+                         //  SharedPreferences prefs = await SharedPreferences.getInstance();
+                         //  prefs.setString('foodType',answer);
+                         //
 
 
-                              if(answer =="Yes"){
-
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuestionEight(widget.answersData)));
-
-                              }
-                              else{
-                                widget.answersData["distKm"]="0";
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => QuestionNine(widget.answersData)));
-
-                              }
+                          if(answer == "Meat in every meal"){
+                            answersData["foodType"]="a";
+                          }
+                          else if(answer == "Meat in some meals"){
+                            answersData["foodType"]="b";
+                          }
+                          else if(answer == "Meat very rarely"){
+                            answersData["foodType"]="c";
+                          }
+                          else if(answer == "Vegetarian"){
+                            answersData["foodType"]="d";
+                          }
 
 
-                            },
-                            child: Text(
-                              "Next",
-                              style: TextStyle(fontSize: 23, color: Colors.white),
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.only(
-                                      topLeft: Radius.circular(20))),
-                              padding:
+                          // print("after you click on button in page one and my current data is : ");
+                          // print(answersData.length);
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => QuestionTwo(
+                              answersData
+
+                          )) );
+
+
+                        },
+                        child: Text(
+                          "Next",
+                          style: TextStyle(fontSize: 23, color: Colors.white),
+                        ),
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.only(
+                                  topLeft: Radius.circular(20))),
+                          padding:
                               EdgeInsets.symmetric(vertical: 20, horizontal: 44),
-                              primary: Colors.white,
-                              backgroundColor: Q7_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-                            )),
-                      ],
-                    )))
+                          primary: Colors.white,
+                          backgroundColor: Q1_mainColor, //hereeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+                        )),
+                  ],
+                )))
           ],
         ),
       ),
     );
-}
+  }
 }
