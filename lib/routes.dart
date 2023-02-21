@@ -4,10 +4,12 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/screens/complete_profile/complete_profile_screen.dart';
 import 'package:graduation/screens/create_new_password/create_new_password_screen.dart';
+import 'package:graduation/screens/edit_profile/edit_profile_screen.dart';
 import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
 import 'package:graduation/screens/intro_questions/intro_questions.dart';
 import 'package:graduation/screens/otp/otp_screen.dart';
+import 'package:graduation/screens/profile/profile_screen.dart';
 import 'package:graduation/screens/questions/components/question_eight.dart';
 import 'package:graduation/screens/questions/components/question_five.dart';
 import 'package:graduation/screens/questions/components/question_four.dart';
@@ -32,6 +34,7 @@ final Map  <String, WidgetBuilder> routes = {
   OtpScreen.routeName:((context) => OtpScreen()),
   ForgetPasswordScreen.routeName:((context) => ForgetPasswordScreen()),
   CreateNewPasswordScreen.routeName:((context) => CreateNewPasswordScreen()),
+  ProfileScreen.routeName:((context) => ProfileScreen()),
   CompleteProfileScreen.routeName:((context) => CompleteProfileScreen(firstSignUpScreenData: {},)),
  // ResultScreen.routeName:((context)=>ResultScreen()),
   WebPageScreen.routeName:((context) => WebPageScreen()),
@@ -40,6 +43,7 @@ final Map  <String, WidgetBuilder> routes = {
   SplashScreen.routeName:((context) => SplashScreen()),
   IntroScreen.routeName:((context) => IntroScreen()),
 
+  EditProfile.routeName:((context) => EditProfile()),
   QuestionOne.routeName:((context) => QuestionOne()),
  // QuestionTwo.routeName:((context) => QuestionTwo()),
  //  QuestionThree.routeName:((context) => QuestionThree()),

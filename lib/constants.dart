@@ -60,6 +60,38 @@ const LightModeHeaderColor = Color(0xFF474747);
 const LightModeSmallTextColor = Color(0xFF4D4B4B);
 const LightGray = Color(0xFFF2F1F1);
 const Red = Color(0xFFEB4335);
+const DarkGreen = Color(0xFF1CA953);
+
+final ProfileItemHeadline =
+TextStyle(
+  fontSize: getProportionateScreenWidth(15), //26
+  fontFamily: "Poppins",
+  //fontWeight: FontWeight.w700,  // semibold = w600
+  color: Colors.black,
+);
+
+final ProfileItemDetail =
+TextStyle(
+  fontSize: getProportionateScreenWidth(12), //26
+  fontFamily: "Poppins",
+  //fontWeight: FontWeight.w700,  // semibold = w600
+  color: Color(0xFFD7D7D7),
+);
+
+final ProfileUserName = TextStyle(
+  fontSize: getProportionateScreenWidth(17), //26
+  fontFamily: "Poppins",
+  //fontWeight: FontWeight.w700,  // semibold = w600
+  color: Colors.white,
+);
+final Profiledescreption = TextStyle(
+  fontSize: getProportionateScreenWidth(12), //26
+  fontFamily: "Poppins",
+  //fontWeight: FontWeight.w700,  // semibold = w600
+  color: Color(0xFFD7D7D7),
+);
+
+
 
 final LightModeHeadersStyle = TextStyle(
   fontSize: getProportionateScreenWidth(21), //26
