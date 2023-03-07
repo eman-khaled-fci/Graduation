@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
 import 'package:graduation/screens/plant1_page/plant1_screen.dart';
 import 'package:graduation/screens/questions/components/question_one.dart';
+import 'package:graduation/screens/regression1_page/regression1_screen.dart';
 import 'package:graduation/size_config.dart';
 import '../../../constants.dart';
 import '../../articles/article_screen.dart';
@@ -54,7 +55,7 @@ class Body extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 GestureDetector(
-                    onTap: (){},
+                    onTap: (){Navigator.pushNamed(context, Regression1Screen.routeName);},
                     child: Image.asset("assets/images/icon-park-solid_analysis.png",
                       width: 25,
                       height: 25,),),
@@ -457,7 +458,7 @@ class Body extends StatelessWidget {
                                   //       end: Alignment.centerRight,
                                   //       colors: [
                                   //         LightModeMainColor,
-                                  //        Color(0xFFA3D0A6),
+                                  //        Colors.white,
                                   //       ]),
                                   //   value: 0.8,
                                   // ),

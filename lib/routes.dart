@@ -20,6 +20,8 @@ import 'package:graduation/screens/questions/components/question_seven.dart';
 import 'package:graduation/screens/questions/components/question_six.dart';
 import 'package:graduation/screens/questions/components/question_three.dart';
 import 'package:graduation/screens/questions/components/question_two.dart';
+import 'package:graduation/screens/regression1_page/regression1_screen.dart';
+import 'package:graduation/screens/regression2_page/regression2_screen.dart';
 import 'package:graduation/screens/sign_in/sign_in_screen.dart';
 import 'package:graduation/screens/sign_up/sign_up_screen.dart';
 import 'package:graduation/screens/web_page/web_page_screen.dart';
@@ -57,7 +59,8 @@ final Map  <String, WidgetBuilder> routes = {
   Plant2Screen.routeName:((context)=> Plant2Screen()),
   Plant3Screen.routeName:((context)=> Plant3Screen()),
   ArticlesScreen.routeName:((context)=>ArticlesScreen()),
-
+  Regression1Screen.routeName:((context)=> Regression1Screen()),
+  Regression2Screen.routeName:((context)=> Regression2Screen()),
 
 
 

@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:graduation/constants.dart';
 import 'package:graduation/screens/plant1_page/plant1_screen.dart';
 import 'package:graduation/screens/plant3_page/plant3_screen.dart';
+import 'package:graduation/screens/regression1_page/regression1_screen.dart';
 import 'package:graduation/size_config.dart';
 import 'package:camera/camera.dart';
 import '../../articles/article_screen.dart';
@@ -58,7 +59,7 @@ class Body extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   GestureDetector(
-                    onTap: (){},
+                    onTap: (){Navigator.pushNamed(context, Regression1Screen.routeName);},
                     child: Image.asset("assets/images/icon-park-solid_analysis.png",
                       width: 25,
                       height: 25,),),
