@@ -157,7 +157,7 @@ class Body extends StatelessWidget {
 
                 Text("Articles",
                   style: TextStyle(
-                      fontSize: 27,
+                      fontSize: 25,
                       fontFamily: "Poppins",
                       fontWeight: FontWeight.bold,
                       color: LightModeSmallTextColor

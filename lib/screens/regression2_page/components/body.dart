@@ -34,6 +34,7 @@ class _BodyState extends State<Body> {
       _ChartData('2016', 6),
       _ChartData('2015', 5),
       _ChartData('2014', 4),
+
     ];
     _tooltip = TooltipBehavior(enable: true);
     super.initState();
@@ -254,12 +255,20 @@ class _BodyState extends State<Body> {
                 child: Table(
                   children: [
                     buildRow(['Year','Emissions','Range'],isHeader: true),
-                    buildRow(['2019','11293756 Kg','Lowest']),
+                    buildRow(['2014','11608739 Kg','']),
+                    buildRow(['2015','11543665 Kg','']),
+                    buildRow(['2016','11874351 Kg','']),
+                    buildRow(['2017','11374369 Kg','Lowest']),
+                    buildRow(['2018','11874365 Kg','']),
+                    buildRow(['2019','11878756 Kg','']),
                     buildRow(['2020','12534768 Kg','Highest']),
-                    buildRow(['2021','11874365 Kg','']),
+                    buildRow(['2021','11874295 Kg','']),
+                    buildRow(['2022','11811163 Kg','']),
                   ],
                 ),
-              )
+              ),
+
+              SizedBox(height: SizeConfig.screenHeight*0.2,)
             ],
           ),
         ),

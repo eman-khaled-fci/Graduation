@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_widgets/gradient_widgets.dart';
+import 'package:graduation/screens/about/about_screen.dart';
+import 'package:graduation/screens/contact_us/contact_screen.dart';
 import 'package:graduation/screens/plant1_page/plant1_screen.dart';
 import 'package:graduation/screens/questions/components/question_one.dart';
 import 'package:graduation/screens/regression1_page/regression1_screen.dart';
@@ -667,7 +669,7 @@ class Body extends StatelessWidget {
                     SizedBox(height: SizeConfig.screenHeight*0.02,),
 
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){Navigator.pushNamed(context, ContactScreen.routeName);},
                       child: Row(
                         children: [
                           Container(
@@ -716,7 +718,7 @@ class Body extends StatelessWidget {
                     SizedBox(height: SizeConfig.screenHeight*0.02,),
 
                     GestureDetector(
-                      onTap: (){},
+                      onTap: (){Navigator.pushNamed(context, AboutScreen.routeName);},
                       child: Row(
                         children: [
                           Container(

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:graduation/routes.dart';
+import 'package:graduation/screens/about/about_screen.dart';
 import 'package:graduation/screens/articles/article_screen.dart';
 import 'package:graduation/screens/complete_profile/complete_profile_screen.dart';
+import 'package:graduation/screens/contact_us/contact_screen.dart';
 import 'package:graduation/screens/create_new_password/create_new_password_screen.dart';
 import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
@@ -36,7 +38,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
         theme: theme(),
-        initialRoute: Regression2Screen.routeName,
+        initialRoute: ContactScreen.routeName,
         routes: routes,
 
 

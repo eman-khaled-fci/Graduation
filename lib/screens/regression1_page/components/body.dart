@@ -18,11 +18,11 @@ class Body extends StatefulWidget {
 
 class _BodyState extends State<Body> {
 
- List<String> itemsF =['From','2014','2015','2016','2017','2018','2019','2020','2021','2022'];
- String? SelectedItemF = 'From';
+ List<String> itemsFrom =['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022'];
+ String? SelectedItemFrom ;
 
- List<String> itemsT =['To','2014','2015','2016','2017','2018','2019','2020','2021','2022'];
- String? SelectedItemT = 'To';
+ List<String> itemsTo =['2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022'];
+ String? SelectedItemTo ;
 
 
  @override
@@ -215,18 +215,24 @@ class _BodyState extends State<Body> {
                           border: Border.all(color: Colors.black12,width: 2),
                           borderRadius: BorderRadius.circular(12),
                         ),
+
                         child: DropdownButton<String>(
                           iconSize: 27,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
                           icon: Icon(Icons.arrow_drop_down,color: LightModeMainColor,),
                           isExpanded: true,
-                          value: SelectedItemF,
-                          onChanged: (item)=> setState(() => SelectedItemF = item),
-                          items: itemsF
+                          hint: Text("From", style: TextStyle(
+                            fontSize: 15,
+                            color: LightModeMainColor
+                          ),),
+                          value: SelectedItemFrom,
+                          onChanged: (item)=> setState(() => SelectedItemFrom = item),
+                          items: itemsFrom
                           .map((item) => DropdownMenuItem<String>(
                             value: item,
                             child: Text(item,style: TextStyle(
-                              fontSize: 15,
-                              color: LightModeMainColor,
+                              fontSize: 14,
+                              color: LightModeSmallTextColor,
                             ),),
                           ))
                           .toList(),
@@ -242,18 +248,25 @@ class _BodyState extends State<Body> {
                           border: Border.all(color: Colors.black12,width: 2),
                           borderRadius: BorderRadius.circular(12),
                         ),
+
                         child: DropdownButton<String>(
                           iconSize: 27,
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          hint: Text("To",style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                              color: LightModeMainColor
+                          ),),
                           icon: Icon(Icons.arrow_drop_down,color: LightModeMainColor,),
                           isExpanded: true,
-                          value: SelectedItemT,
-                          onChanged: (item)=> setState(() => SelectedItemT = item),
-                          items: itemsT
+                          value: SelectedItemTo,
+                          onChanged: (item)=> setState(() => SelectedItemTo = item),
+                          items: itemsTo
                               .map((item) => DropdownMenuItem<String>(
                             value: item,
                             child: Text(item,style: TextStyle(
-                              fontSize: 15,
-                              color: LightModeMainColor,
+                              fontSize: 14,
+                              color: LightModeSmallTextColor,
                             ),),
                           ))
                               .toList(),

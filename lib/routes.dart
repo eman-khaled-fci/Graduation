@@ -1,7 +1,9 @@
 //import 'dart:js';
 import 'package:flutter/material.dart';
+import 'package:graduation/screens/about/about_screen.dart';
 import 'package:graduation/screens/articles/article_screen.dart';
 import 'package:graduation/screens/complete_profile/complete_profile_screen.dart';
+import 'package:graduation/screens/contact_us/contact_screen.dart';
 import 'package:graduation/screens/create_new_password/create_new_password_screen.dart';
 import 'package:graduation/screens/forget_password/forget_password_screen.dart';
 import 'package:graduation/screens/home/home_screen.dart';
@@ -61,7 +63,8 @@ final Map  <String, WidgetBuilder> routes = {
   ArticlesScreen.routeName:((context)=>ArticlesScreen()),
   Regression1Screen.routeName:((context)=> Regression1Screen()),
   Regression2Screen.routeName:((context)=> Regression2Screen()),
-
+  AboutScreen.routeName:((context)=> AboutScreen()),
+  ContactScreen.routeName:((context)=> ContactScreen()),
 
 
 };
